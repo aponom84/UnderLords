@@ -9,6 +9,7 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{lipsum}
+\usepackage{hyperref}
 
 \usepackage{amsmath, amsfonts, amsthm,amssymb}
 \usepackage[english, russian]{babel}
@@ -61,10 +62,10 @@
 
 
 % keywords can be removed
-\keywords{Целочисленное программирование \and NP-hard }
+\keywords{Целочисленное программирование \and NP-трудность}
 
 
-\section{Описание Dota Underlords}
+\section{Описание игры Dota Underlords}
 %Here will be our great introduction that will inspire everybody who reads it.
 
 По ходу игры восемь игроков составляют команду из <<героев>> – существ, способных сражаться друг с другом на игровой карте. У каждого из героев есть базовые параметры - здоровье, урон, скорость атаки и прочие, а также особоая способность, которая определяет его роль в игре. Каждый герой принадлежит к двум или более <<альянсам>> - классам, в которые входят несколько героев. так, например, герой Enchantress принадлежит одновременно к альянсу <<друиды>> и к альянсу <<хищники>>. При наборе нескольких героев из одного альянса (для каждого альянса это число индивидуально) игрок получает бонус, который выражается в усилении всех героев из альянса, усилении всех своих героев или ослаблении всех героев соперника. Последнее может быть интерпретировано как относительное усиление своих героев и поэтому на протяжении работы будут рассматриваться только первые два случая. Следует отметить, что для одного альянса может быть несколько бонусов, которые открываются разным количеством героев соответствующего альянса, при этом они могут быть разного типа.
@@ -119,42 +120,33 @@ $\forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} - k \ge M( I_{ijk}  - 1)$. \te
 
 Таким образом, после введения в модель альянсов, она выглядит следующим образом.
 %Общая система уравнений выглядит следующим образом:
+
 \begin{equation}
 \begin{gathered}
 \textbf{Целевая функция:}\\
 max \sum_{i=1}^{n} x_i s_i + \sum_{i=1}^{n} \sum_{j=1}^{t}  \sum_{k=1}^{q} e_{ijk} I_{ijk} \\
-
 \textbf{Ограничения на входные данные}\\
-    
 \forall{j} : \sum_{i=1}^n a_{ij} \le q \\
-
-Ограничения на управляющие переменные \\
+\textbf{Ограничения на управляющие переменные} \\
 \forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} - k \ge M( I_{ijk}  - 1) \\
 \sum_{i=1}^n x_i \le m   \\ 
-
 % \sum_{i=0}^{n-1} a_{ij} x_{i} < k \\ 
-
 \forall{i,j,k} :  I_{ijk}  \le x_i \\
-
 %\forall{i,j,k} :  I_{ijk}  \le a_{ij} \\
-
 \text{Управляющие переменные:} \\
 I_{ijk} \in \{0, 1\} \text {, 1 – если для героя } i \text{, активирован} k\text{-й бонус } j \text{-го альянса,} \\
 x_i  \in \{0, 1\} \text{, 1 -- если герой } i \text{– входит в решение} \\
-
 \textbf{Константы:} \\
 n \in \mathbb{N} \text{ -- число героев,} \\
 m \in \mathbb{N} \text{ -- максимальный размер команды}\\
 t \in \mathbb{N} \text{ -- общее количество альянсов} \\
 q \in \mathbb{N} \text{ -- максимальный размер одного альянса,} \\
-
 s_i  \in \mathbb{R} \text{–- сила героя } i, \\
 e_{ijk} \in \mathbb{R} \text{ -- бонус для героя } i \text{,  если активирован } k
 \text{-й бонус } j \text{-го альянса} \\
 a_{ij} \in \{0, 1\} \text{, 1 -- если герой } i \text{ входит в альянс } j \\ 
 \end{gathered}
 \end{equation}
-
 
 \section{Доказательство NP-трудной задачи Dota Underlords с альянсами}
 
@@ -163,17 +155,32 @@ a_{ij} \in \{0, 1\} \text{, 1 -- если герой } i \text{ входит в 
 
 \subsection{Первый способ – Сведение задачи о рюкзаке к UnderLoards}
 
-Классическая задача о рюкзаке формулируется следующим образом. Задан набор предметов $1...n$ для которых известны веса $w_i$ и стоимости $c_i$. Требуется найти набор предметов с максимальной суммарной стоимостью и при этом, чтобы общий вес предметов не превышал максимальный заданныей вес рюкзака $W$.
+Классическая задача о рюкзаке формулируется следующим образом. Задан набор предметов $\hat{i}=1...\hat{n}$ для которых известны веса $w_{\hat{i}}$ и стоимости $c_i$. Требуется найти набор предметов с максимальной суммарной стоимостью и при этом, чтобы общий вес предметов не превышал максимальный заданныей вес рюкзака $W$.
+
+
 
 Мы строим входные данные для UnderLoards следующим образом. 
-Каждый герой входит ровно в один альянс. Альянсов у нас столько сколько предметов. Количество героев в альяньсе $i$  сколько вес предмета $i$. Матрица $e_{ijk}$ устроена таким образом, что сила у героев появляется только при полностью собранном альянсе. Таким образом, выбрать альянс тоже, что и выбрать предмет. Подобрать оптимальную команду, значит выбрать оптимальную конфигурацию альянсов и ей однозначно соответсвует оптимальный набор предметов.
+
+
+
+\begin{enumerate}
+\item Альянсов столько сколько предметов. $t:=\bar{n}$
+\item Каждому предмету $\hat{i}$ мы ставим в соответствие альянс $\hat{i}$
+\item Альянс $\hat{i}$ состоит из $w_{\hat{i}}$ героев. $\forall i : \sum_j^t{a_{ij} } = w_{\hat{i}}  $
+\item Сила каждого героя равна нулю ( $\forall i : s_i = 0 $ ). 
+\item Каждый герой входит только в один альянс ($\forall i : \sum_{j=1}^t {a_{ij}} =1 $ ).
+\item Матрица $e_{ijk}$ устроена таким образом, что альянс $\hat{i}$  вносит вклад в общую силу команды только при полностью собранном альянсе, и этот вкад от альянса равен стоимости предмета  $c_{\hat{i}}$. Говоря формальным языком, матрица $e_{ijk}$ должна удовлетворять ограничению $ \forall \hat{i}, k = \textit{размер альянса }\hat{i} : \sum_{i=1}^n {e_{i \hat{i}k } } $ . 
+\end{enumerate}
+
+
+Таким образом, в оптимальном решении будут присутствовать только полностью собраные альянсы. Альянсы вошедшие в решение, будут соответстовать оптимальному набору предметов в задаче о ранце.
 
 \subsection{Второй способ – Сведение задачи о поиска максимальго плотного подграфа к UnderLoards}
 
 Расммотрим её частный случай - пусть все альянсы имеют размер равный двум, и сила всех героев одинакова. Рассмотрим частный случай задачи Dota Underlords со следующими ограничениями:
 
 \begin{enumerate}
-    \item Силы всех героев одинаковы ($\forall i, j x_i=x_j$)
+    \item Силы всех героев одинаковы ($\forall i, j s_i=s_j$)
     \item Альянсы могут давать бонусы исключительно героям в них состоящим ($\forall i, j, k a_{ij}=0 \Longrightarrow e_{ijk} = 0$)
     \item Все альянсы имеют одинаковый размер, равный двум ($\forall j \sum_i a_{ij}=2$)
     \item Все альянсы дают бонус исключительно при наличии в них обоих героев ($\forall i, j e_{ij1}=0$)
@@ -182,7 +189,7 @@ a_{ij} \in \{0, 1\} \text{, 1 -- если герой } i \text{ входит в 
 
 Тогда данные можно представить в виде графа $G(V, E)$, где множество вершин $V$ соответствует героям, а множество рёбер $E$ - активным альянсам. Задача поиска оптимальной команды размера $k$ таким образом сводится к поиску порождённого графа $G$ на $k$ вершинах с максимальной плотностью. Под плотностью в данной формулировке может понимается величина $\frac{G'(E)}{G'(V)}$. Действительно, при данных ограничениях общая сила команды линейно зависит от количества активных альянсов, что соответствует $G'(E)$. Т.к. $k$ неизменно, то с ростом плотности графа $G'$ растёт итоговая сила команды.
 
-В работе \ref{DF95} было показано, что задача поиска порождённого подграфа с максимальной плотностью и фиксированным размером в графе является NP-полной. Как было показано, она является частным случаем задачи Dota Underlords и к ней сводится. Отсюда следует её NP-сложность.
+В работе \cite{downey1995fixed} было показано, что задача поиска порождённого подграфа с максимальной плотностью и фиксированным размером в графе является NP-полной. Как было показано, она является частным случаем задачи Dota Underlords и к ней сводится. Отсюда следует её NP-сложность.
 
 
 \section{Практическое применение для реальной задачи Dota Underlords}
@@ -191,19 +198,100 @@ a_{ij} \in \{0, 1\} \text{, 1 -- если герой } i \text{ входит в 
 
 В рамках упрощённой модели мы принимаем следующее.
 
-1) Силы всех героев первого яруса равны 1, второго 1.5, третьего - 2, чевертого - 2.5, пятого - 3
+1) Силы всех героев первого яруса равны 1, второго 2, третьего - 3, чевертого - 4, пятого - 5
+2) Альянсы дают один и тот же процентный бонус всем, на кого они одинаково влияют.
+3) Бонус от альянса составляет примерно 10-30 процентов от силы героя.
 
-2) Все альянсы дают один и тот же мультипликативный бонус 1.1. Если у альянса больше одного уровня влияния на героев (например альянс воинов даёт своим героям последовательно +10, +15 и + 25 к броне), то второй уровень даёт мультипликативный бонус 1.2, третий - 1.3.
+Детализированная таблица может быть найдена в нашем \href{https://github.com/aponom84/UnderLords/blob/master/UnderLordsData.xlsx}{репозитории} \cite{UnderLoardsInput}.
 
-Особым случаем является альянс Scrappy, которой даёт бонус на своём первом уровне одному своему случайно выбранному члену. Мы считаем этот бонус равномерно распределённым между всеми членами альянса в рамках общей модели и считаем как и прочие бонусы первого уровня. Бонус второго уровня мы в этом альянсе считаем так же, как в других.
+Таблица альянсов \\
 
+\begin{table}
+\center
+\resizebox{!}{10cm} {
+\begin{tabular}{llrl}
+\label{aliances}
+{№} &                 Герой &  Сила &                       Альянсы \\
+\midrule
+0  &                 tusk &      1 &               savage, warrior  \\
+1  &           venomancer &      1 &               scaled, summoner \\
+2  &         shadow demon &      1 &               demon, heartless \\
+3  &          drow ranger &      1 &    heartless, hunter, vigilant \\
+4  &          bloodseeker &      1 &           blood-bound, deadeye \\
+5  &         nyx assassin &      1 &               assassin, insect \\
+6  &       crystal maiden &      1 &                    human, mage \\
+7  &                 tiny &      1 &           primordial, warrior  \\
+8  &             batrider &      1 &                  knight, troll \\
+9  &               magnus &      1 &                  druid, savage \\
+10 &             snapfire &      1 &                 brawny, dragon \\
+11 &           arc warden &      1 &           primordial, summoner \\
+12 &                razor &      1 &               mage, primordial \\
+13 &               weaver &      1 &                 hunter, insect \\
+14 &              warlock &      1 &  blood-bound, healer, warlock  \\
+15 &               dazzle &      2 &                  healer, troll \\
+16 &         earth spirit &      2 &               spirit, warrior  \\
+17 &         storm spirit &      2 &                   mage, spirit \\
+18 &         witch doctor &      2 &                troll, warlock  \\
+19 &          bristleback &      2 &                 brawny, savage \\
+20 &     legion commander &      2 &                champion, human \\
+21 &        queen of pain &      2 &                assassin, demon \\
+22 &     nature's prophet &      2 &                druid, summoner \\
+23 &                 luna &      2 &               knight, vigilant \\
+24 &           windranger &      2 &               hunter, vigilant \\
+25 &            ogre magi &      2 &       blood-bound, brute, mage \\
+26 &                pudge &      2 &            heartless, warrior  \\
+27 &          beastmaster &      2 &                 brawny, hunter \\
+28 &         chaos knight &      2 &                  demon, knight \\
+29 &              slardar &      2 &               scaled, warrior  \\
+30 &              abaddon &      3 &              heartless, knight \\
+31 &                viper &      3 &               assassin, dragon \\
+32 &           juggernaut &      3 &               brawny, warrior  \\
+33 &         ember spirit &      3 &               assassin, spirit \\
+34 &                   io &      3 &              druid, primordial \\
+35 &         shadow fiend &      3 &                demon, warlock  \\
+36 &                lycan &      3 &        human, savage, summoner \\
+37 &          broodmother &      3 &               insect, warlock  \\
+38 &            morphling &      3 &               mage, primordial \\
+39 &          lifestealer &      3 &               brute, heartless \\
+40 &           omniknight &      3 &          healer, human, knight \\
+41 &          terrorblade &      3 &                  demon, hunter \\
+42 &        shadow shaman &      3 &                summoner, troll \\
+43 &               enigma &      3 &               primordial, void \\
+44 &     treant protector &      3 &                   brute, druid \\
+45 &                 doom &      4 &                   brute, demon \\
+46 &            disraptor &      4 &               brawny, warlock  \\
+47 &          void spirit &      4 &                   spirit, void \\
+48 &               mirana &      4 &               hunter, vigilant \\
+49 &           tidehunter &      4 &               scaled, warrior  \\
+50 &            necrophos &      4 &    healer, heartless, warlock  \\
+51 &           lone druid &      4 &        druid, savage, summoner \\
+52 &                 sven &      4 &          human, knight, scaled \\
+53 &                slark &      4 &               assassin, scaled \\
+54 &     templar assassin &      4 &       assassin, vigilant, void \\
+55 &  keeper of the light &      4 &                    human, mage \\
+56 &                  axe &      5 &                  brawny, brute \\
+57 &        faceless void &      5 &                 assassin, void \\
+58 &            sand king &      5 &                 insect, savage \\
+59 &                 lich &      5 &                heartless, mage \\
+60 &               medusa &      5 &                 hunter, scaled \\
+61 &        dragon knight &      5 &          dragon, human, knight \\
+62 &        troll warlord &      5 &                troll, warrior  \\
+\bottomrule
+\end{tabular}
+}
+\caption{Таблица силы геров и принадлежности их к альянсам. }
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  RESULT TABLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Таблица результатов выглядит следущим образом \ref{solution}:
+\begin{table}
 \resizebox{17cm}{!} {
-%{\footnotesize
-\begin{tabular}{l|llllllll|rrr}
-%\begin{tabular}{p{0.2\textwidth}*{12}{>{\centering\arraybackslash}p{0.2\textwidth}}}
-\toprule
-{} &                   &               &                &                &                &                  &                  &                  &  aliance contrubtion &  hero power &   sum \\
-hero          &                    &                &                 &                 &                 &                   &                   &                   &                      &             &       \\
+\begin{tabular}{l| *{8}{p{1.6cm}} | *{3}{ p{1cm}} }
+\label{solution}
+{Герой} &                   &               &                &                &                &                  &                  &                  &  Вклад альянса &  Сила героев &   сумма \\
 \midrule
 broodmother   &  heartless 2 +0.3  &  human 2 +0.3  &  insect 2 +0.3  &  scaled 2 +0.6  &   troll 2 +0.3  &  warlock  2 +0.6  &  warlock  4 +0.6  &                   &                  3.0 &           3 &   6.0 \\
 disraptor     &  heartless 2 +0.4  &  human 2 +0.4  &  insect 2 +0.4  &  scaled 2 +0.8  &   troll 2 +0.4  &  warlock  2 +0.8  &  warlock  4 +0.8  &                   &                  4.0 &           4 &   8.0 \\
@@ -217,8 +305,17 @@ troll warlord &  heartless 2 +0.5  &  human 2 +0.5  &  insect 2 +0.5  &  scaled 
 witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 2 +0.4  &   troll 2 +0.4  &  warlock  2 +0.4  &  warlock  4 +0.4  &                   &                  2.2 &           2 &   4.2 \\
 \bottomrule
 \end{tabular}
-%}
 }
+\caption{Оптимальный состав команды в для игры Dota UnderLoards. Таблица результатов }
+\end{table}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+\end{document}
+
+
 
 
 %
@@ -251,19 +348,3 @@ witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 
 % В случае произвольного $b$ данная задача представлет собой специфический случай задачи о сумме. Задачей о сумме называется задача в которой требуется определить, есть ли в данном множестве чисел подмножество с некоторой суммой $s$ (в каноническом случае - с суммой 0). Известно, что он - NP-полна Таким образом, задача Dota Underlords сводится к ней и значит NP-сложна. 
 %\end{proof}
 
-
-
-
-
- 
-
-
-%%% Comment out this section when you \bibliography{references} is enabled.
-\begin{thebibliography}{1}
-
-
-
-\end{thebibliography}
-
-
-\end{document}
