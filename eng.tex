@@ -11,14 +11,15 @@
 \usepackage{lipsum}
 
 \usepackage{amsmath, amsfonts, amsthm,amssymb}
-\usepackage[english, russian]{babel}
+%\usepackage[english, russian]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 
 \newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Лемма}
-\newtheorem{corollary}{Следствие}
-\newtheorem{proposition}{Предложение}
-\newtheorem{assertion}{Утверждение}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assertion}{Assertion}
 
 % \title{NP-completeness and LP formulation of Dota Underlords problem}
 % \title{Hacking Dota Underlords With Integer Programming Model}
@@ -65,22 +66,22 @@ In this paper, we demonstrate how the problem of the optimal team choice in the 
 
 \section{Introduction}
 People love to play games. Many games and puzzles that people play, are interesting by its complexity: you need to be smart  enough to solve it. In many cases such complexity can be expressed as computation complexity depending on input size. For example, it has been shown \cite{fraenkel1981computing} that the chess game belongs to the EXPTIME class complexity; 
-decision problem of player in legendary video game <<Tetris>> is NP-hard \cite{breukelaar2004tetris}. It was shown that the puzzle  <<Skoban>>  has polynomially solvable \cite{hearn2005pspace}.
+decision problem of player in legendary video game ``Tetris" is NP-hard \cite{breukelaar2004tetris}. It was shown that the puzzle ``Skoban"  has polynomially solvable \cite{hearn2005pspace}.
 
 The spacial place in the theoretical computer science has NP-complete computational class.
-It was found in \cite{kaye2000minesweeper} that <<Minesweeper>> belongs to NP-complete class. The problem of finding minimal number of chip movements in generalized version of 15-puzzle for the board of size $N \times N$ belongs to the NP-class also  \cite{ratner1986finding}.
+It was found in \cite{kaye2000minesweeper} that ``Minesweeper" belongs to NP-complete class. The problem of finding minimal number of chip movements in generalized version of 15-puzzle for the board of size $N \times N$ belongs to the NP-class also  \cite{ratner1986finding}.
 
 In some sense, every NP-complete problem is puzzle, and vice-verse, many puzzles are NP-complete. For the further r . For a deeper study of the topic of computational complexity of puzzles and games, we refer the reader to the review \cite{costa2018computational}.
 
 In this paper, we consider a popular video game Dota Unlderlords. It is one of the co-called  auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which belongs to the class NP-complete.
 
 The article is organized as follows. In sectuib \ref{SectionDUDescription} Dota Underlords game play is described.
-We present the formulation of the Dota Underlords problem as a linear integer programming problem in the section \ref{SectionDUIP}. In the \ ref {SectionNPCompleteProof} section, we show the NP completeness of this task. The solution of the integer programming model for real data is published in the section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} <<Conclusion>>.
+We present the formulation of the Dota Underlords problem as a linear integer programming problem in the section \ref{SectionDUIP}. In the \ ref {SectionNPCompleteProof} section, we show the NP completeness of this task. The solution of the integer programming model for real data is published in the section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} ``Conclusion".
 
 \section{Dota Underlords game play description}
 \label{SectionDUDescription}
 
-During the game, eight players build a team of << heroes >> -- creatures that can fight each other on the game map. Each of the heroes has basic parameters: health, damage, attack speed and others, as well as a special ability that determines its role in the game. Each hero belongs to two or more << alliances >> -- sets that unite several heroes. For example, the hero Enchantress belongs simultaneously to the alliance << druids >> and to the alliance << predators >>. When  several heroes in the team are from the same alliance (for each alliance this number is an individual), the player receives a bonus consisting in improving the characteristics of his heroes or worsening the characteristics of strangers.
+During the game, eight players build a team of ``heroes"-- creatures that can fight each other on the game map. Each of the heroes has basic parameters: health, damage, attack speed and others, as well as a special ability that determines its role in the game. Each hero belongs to two or more ``alliances"-- sets that unite several heroes. For example, the hero Enchantress belongs simultaneously to the alliance ``druids" and to the alliance ``predators". When  several heroes in the team are from the same alliance (for each alliance this number is an individual), the player receives a bonus consisting in improving the characteristics of his heroes or worsening the characteristics of strangers.
 
 Also during the game, you can strengthen your heroes by upgrading them to higher levels or by purchasing in-game items. In this work, these aspects will not be taken into account.
 
@@ -97,9 +98,7 @@ Thus, the strength of a player’s team is determined by:
 
 \subsection{The simplest problem statement}
 
-We formalize the problem as follows:
-
-We assume that in total we have $n$ heroes to choose from. We assume that the strength (power) of some $i$-th hero is presented by some non-negative value $s_i$. As $x_i$ we denote the  belonging of here $i$ to the team. Let $ x_i = 1 $, if the $ i $ -th hero belongs to the forming team and $ x_i = 0 $ otherwise. The condition that in a team no more than $m$  heroes can be written as $ \sum_{i=1}^n x_i \ leq m $. Then in the simplest form this problem can be expressed as follows:
+We formalize the problem as follows. We assume that in total we have $n$ heroes to choose from. We assume that the strength (power) of some $i$-th hero is presented by some non-negative value $s_i$. As $x_i$ we denote the  belonging of here $i$ to the team. Let $ x_i = 1 $, if the $ i $ -th hero belongs to the forming team and $ x_i = 0 $ otherwise. The condition that in a team no more than $m$  heroes can be written as $ \sum_{i=1}^n x_i \ leq m $. Then in the simplest form this problem can be expressed as follows:
 
 \begin{equation}
 \begin{gathered}
@@ -114,21 +113,21 @@ We assume that in total we have $n$ heroes to choose from. We assume that the st
 In this statement, the problem is solved elementarily - it is enough to take $ n $ elements with the largest weights.
 
 \subsection{Problem statement with alliances}
-As mentioned, in << Dota Underlords >> each hero belongs to two or more << alliances >> -- classes in turn each alliance includes several heroes. When a team has several heroes from the same alliance (for each alliance this number is individual), the player receives a bonus, which is expressed in strengthening all the heroes from the alliance, strengthening all his heroes, or weakening all the heroes of the opponent. The latter can be interpreted as a relative strengthening of their heroes, and therefore only the first two cases will be considered throughout the work. It should be noted that for one alliance there can be several bonuses that open by the different numbers of heroes of the corresponding alliance, while they can be of different types.
+As mentioned, in``Dota Underlords" each hero belongs to two or more ``alliances" -- classes in turn each alliance includes several heroes. When a team has several heroes from the same alliance (for each alliance this number is individual), the player receives a bonus, which is expressed in strengthening all the heroes from the alliance, strengthening all his heroes, or weakening all the heroes of the opponent. The latter can be interpreted as a relative strengthening of their heroes, and therefore only the first two cases will be considered throughout the work. It should be noted that for one alliance there can be several bonuses that open by the different numbers of heroes of the corresponding alliance, while they can be of different types.
 
-We propose to model this situation by introducing a 3-index tensor $ e_ {ijk} \ in \mathbb {R} $ which means a bonus to the hero $i$ for the alliance $ j $, in which there are at least $k$ heroes of the alliance $ j $. In other words, $ e_{ijk} $ is the $k$-th bonus of the alliance $ j$ for the hero $i$.
+We propose to model this situation by introducing a 3-index tensor $ e_{ijk} \in \mathbb{R} $ which means a bonus to the hero $i$ for the alliance $j$, in which there are at least $k$ heroes of the alliance $j$. In other words, $ e_{ijk} $ is the $k$-th bonus of the alliance $ j$ for the hero $i$.
 
-Using the tensor $ e_ {ijk} $, we support two types of alliances -- those that give bonuses to their members and those that give bonuses to all the heroes of the player. Moreover, the alliances of the considered types differ only in that in the alliances that give a bonus to their members, the value of $ e_{ijk} $ is zero if and only if the $i$-th hero does not belong to the $j$-th alliance. Note that the tensor $ e_{ijk} $ is sparse, since the alliances from which bonuses go to all the heroes are few.
+Using the tensor $e_{ijk} $, we support two types of alliances -- those that give bonuses to their members and those that give bonuses to all the heroes of the player. Moreover, the alliances of the considered types differ only in that in the alliances that give a bonus to their members, the value of $e_{ijk} $ is zero if and only if the $i$-th hero does not belong to the $j$-th alliance. Note that the tensor $ e_{ijk} $ is sparse, since the alliances from which bonuses go to all the heroes are few.
 
-We propose to control the occurrence of the bonus $ e_ {ijk} $ in the total strength of the team using the control binary variable $ I_ {ijk} $.
-So we can write down the objective function as the following sum $ \ sum_ {i = 1} ^ {n} x_i s_i + \ sum_ {i = 1} ^ {n} \ sum_ {j = 1} ^ {t} $.
-The connection between the variables $ x_ {i} $ and $ I_ {ijk} $ is given by the inequalities
-$\forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} - k \ge M( I_{ijk}  - 1)$. 
+We propose to control the occurrence of the bonus $ e_{ijk} $ in the total strength of the team using the control binary variable $ I_{ijk} $.
+So we can write down the objective function as the following sum $ \sum_{i = 1}^{n} x_i s_i + \sum_{i = 1}^{n} \sum_{j = 1}^{t} $.
+The connection between the variables $ x_{i} $ and $ I_{ijk} $ is given by the inequalities
+$\forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} - k \ge M( I_{ijk} - 1)$. 
 
-They do not allow the binary variable $ I_{ijk} $ to take the value 1 if the solution includes less than $ k $ heroes from the alliance $j$. When the solution contains less than $ $ heroes from the alliance $j$ , the left side of this inequality is negative, so for the inequalities to be observed the right side should be even smaller. This is only possible when the binary $ I_{ijk} $ is zero. In this case, the right-hand side is $-M $, where $M$ is a constant known to be larger than $ k $, that is, larger than the maximum size of the alliance $q$.
-It is reasonable to require that the bonus for the hero $i$ can be activated ($ I_ {ijk} = 1 $) only when the hero $i$ belongs the solution. This is given by the inequalities $ \ forall {i, j, k}: I_ {ijk} \ le x_i $. We also want the bonus $ e_ {ijk} $ to be activated only if the character $ i $ belongs to the alliance $ j $. For this, we included the inequalities $ \ forall {i, j, k} in the model: I_ {ijk} \ le a_ {ij} $.
+They do not allow the binary variable $ I_{ijk} $ to take the value 1 if the solution includes less than $k$ heroes from the alliance $j$. When the solution contains less than $m$ heroes from the alliance $j$ , the left side of this inequality is negative, so for the inequalities to be observed the right side should be even smaller. This is only possible when the binary $ I_{ijk} $ is zero. In this case, the right-hand side is $-M $, where $M$ is a constant known to be larger than $ k $, that is, larger than the maximum size of the alliance $q$.
+It is reasonable to require that the bonus for the hero $i$ can be activated ($ I_{ijk} = 1 $) only when the hero $i$ belongs to the solution. This is given by the inequalities $ \forall {i, j, k}: I_{ijk} \le x_i $. We also want the bonus $ e_ {ijk} $ to be activated only if the character $ i $ belongs to the alliance $ j $. For this, we included  in the model the inequalities $ \forall{i, j, k} :\, I_{ijk} \le a_{ij} $.
 
-Thus, after introducing alliances into the model, the system of equations is as follows.
+Thus, after introducing alliances into the model, the system of equations is the following.
 
 \begin{equation}
 \label{eq:DUIP}
@@ -144,7 +143,7 @@ max \sum_{i=1}^{n} x_i s_i + \sum_{i=1}^{n} \sum_{j=1}^{t}  \sum_{k=1}^{q} e_{ij
 \forall{i,j,k} :  I_{ijk}  \le x_i \\
 %\forall{i,j,k} :  I_{ijk}  \le a_{ij} \\
 \textbf{Decision variables} \\
-I_{ijk} \in \{0, 1\} \text {, 1 – if for the hero} i \text{, the} k\text{-th бонус is activated for }  j \text{-th alliance,} \\
+I_{ijk} \in \{0, 1\} \text {, 1 – if for the hero} i \text{, the} k\text{-th bonus is activated for }  j \text{-th alliance,} \\
 x_i  \in \{0, 1\} \text{, 1 -- if hero } i \text{– belongs to solution} \\
 \textbf{Constants} \\
 n \in \mathbb{N} \text{ -- number of heroues,} \\
@@ -154,7 +153,7 @@ q \in \mathbb{N} \text{ -- maximum size of an alliance,} \\
 s_i  \in \mathbb{R} \text{–- the power of the hero } i, \\
 e_{ijk} \in \mathbb{R} \text{ -- the bonus for the hero } i \text{,  if } k
 \text{-th bonus is activated for the } j \text{-th alliance} \\
-a_{ij} \in \{0, 1\} \text{, 1 -- if hero } i \text{ belongs to alliance j } j \\ 
+a_{ij} \in \{0, 1\} \text{, 1 -- if hero } i \text{ belongs to alliance } j \\ 
 \end{gathered}
 \end{equation}
 
@@ -189,23 +188,18 @@ It was shown in \cite{downey1995fixed} that the problem of fining subgraph with 
 \end{proof}
 
 \subsection{Dota UnderLords belongs to NP-class}
-The decision version of Dota UnderLords problem (problem with the answer <<yes>> or <<no>>) can be formulated as follows. \textit {Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}.
-
-We state the following theorem.
+The decision version of Dota UnderLords problem (problem with the answer ``yes" or ``no") can be formulated as follows: `` \textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}". Then, we are ready to state the following theorem.
 \begin{theorem}
 \label{DU_is_NP}
-Задача Dota UnderLords в варианте зачи с ответом <<да>> или <<нет>>  принадлежит классу NP.
-The decision version of Dota UnderLords problem belongs to the  NP class.
+The decision version of Dota Underlords problem belongs to the  NP class.
 \end{theorem}
 \begin{proof}
 
-By the definition of NP-class, the problem belongs to the class NP, when the presented solution can be checked in polynomial time. In our case, the solution is a set of heroes. To verify the solution, we need to calculate the total power of the team. So we just need find out what alliances are formed and what size of the bonus. In turn, this can be done by $ O (n) $ time. 
+By the definition of NP-class, the problem belongs to the NP class, when the presented solution can be checked in polynomial time. In our case, the solution is a set of $m$ heroes. To verify the solution, we need to calculate the total power of the team. 
 
-(We just need to store mapping  hero->alliance, and (alliance x bonus number -> addition power) )
+So, we just need to calculate the objective function. In turn, to do that, at first we need to find out what alliances are formed. This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$. It is can be done for $O(nt)$ operations. 
 
-Thus we need to two iteration over array of heroes. At 1st iteration we build mapping. And at the 2nd iteration we calculate the total power of the team ( $m$ operations).
-
-Thus the statement is proved.
+After that, the objective function can be calculated in a straight forward way by $O(ntq)$ number of operations. Thus, we need can check the solution for the polynomial time on the input size. 
 \end{proof}
 
 \subsection{NP-completeness of Dota UnderLords problem}
@@ -217,7 +211,7 @@ Thus the statement is proved.
 Theorem \ref{MEWC_DU} states that there exists a polynomial reduction of an NP-complete problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time it lies in the NP class. Therefore decision version of Dota UnderLords problem is NP-complete.	
 \end{proof}
 
-\subsection{Сведение Dota UnderLords к максимальной взвешенной клике}
+\subsection{Reduction from Underlords to maximum edge weighted clique problem}
 While working on the paper, we also found a reduction from the Dota UnderLords problem to the well-known problem -- Maximum Edge Weighted Clique (MEWC). Thus, when solving individual instances of the Dota Underlords problem, any one can use the already developed algorithms for the MEWC problem as \cite{san2019new} or efficient quadratic formulations    \cite{hosseinian2017maximum}.
 
 In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$.
@@ -266,7 +260,7 @@ We construct a graph $G'$ with weighted edges in such way that the solution of t
     We also build all edges between all the vertices of the sets $F$ and $F_2$. We assign a weight of 0 to all these new edges. Evidently, any maximal clique contains one vertex from each of the sets $V$ and $W$ of the families $ \mathcal {F} $ and $ \mathcal {F}_2 $. \\
     Assign to each edge  $ (v_a^ k, w_ {a, b}^{i, j}) $ or $ (v_b^k, w_ {ab}^{i,j}) $ some big constant weight $N$. These edges connect a vertex from the family $\mathcal{F}$ corresponding to a certain hero with a vertex from the family $ F_2 $ corresponding to a pair of heroes where this hero belongs.
     
-    Now we are going to show that any maximal clique in graph $G'$ containing a set of vertices from the family $\mathcal{F}$ corresponding to then set of heroes also contains the set of vertices from the family $\mathcal {F}_2$ corresponding to all pairs of heroes from this team. In this clique, the edges connecting the vertices from the families $\mathcal{F}$ and $ \mathcal {F}_2$ make a total contribution to the weight equals to $2 \binom{n}{2} N$, because maximum clique includes exactly $2 \binom {n} {2}$ edges with additional big weight $N$ --- two incident to each vertex from $\mathcal {F}_2$.
+    Now we are going to show that any maximal clique in graph $G'$ containing a set of vertices from the family $\mathcal{F}$ corresponding to then set of heroes also contains the set of vertices from the family $\mathcal {F}_2$ corresponding to all pairs of heroes from this team. In this clique, the edges connecting the vertices from the families $\mathcal{F}$ and $ \mathcal {F}_2$ make a total contribution to the weight equals to $2 \binom{n}{2} N$, because maximum clique includes exactly $2 \binom {n} {2}$ edges with additional big weight $N$ -- two incident to each vertex from $\mathcal {F}_2$.
     
     	It is easy to see that if a vertex in a clique belongs to the family $\mathcal{F}_2 $ and does not correspond to a pair of associated vertices of $ \mathcal {F} $ that are in the clique, then the clique will contain two edges less that have an additional big constant weight $N$ . Thus, the click will not have the maximum weight. Thus, the statement is proved.
     	
@@ -313,16 +307,16 @@ Thus, the weight of the clique corresponds to the total bonus from the team, fro
 \section{Model application for real data}
 \label{SectionComputationalResults}
   
-We apply this model to analyse the real Dota Underlords problem. Note that our result should not be considered as some objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when  various conditions satisfied, and in addition, ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five <<tiers>>, arranged so that the characters inside the tier are approximately equal in strength.
+We apply this model to analyse the real Dota Underlords problem. Note that our result should not be considered as some objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when  various conditions satisfied, and in addition, ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers", arranged so that the characters inside the tier are approximately equal in strength.
 
 Within the simplified model, we accept the following:
 \begin{enumerate}
-\item The forces of all the heroes of the first tier are equal to 1,  the second -- 2, the third -- 3, the fourth -- 4, the fifth - 5;
+\item The forces of all the heroes of the first tier are equal to 1,  the second -- 2, the third -- 3, the fourth -- 4, the fifth -- 5;
 \item Alliances give the same percentage bonus to everyone they equally influence.;
 \item The alliance bonus is approximately 10-30 percent of the hero’s power.
 \end{enumerate}
 
-Information about the strength of the heroes and the structure of alliances is given in the table. \ref{table:aliances}. 
+Information about the strength of the heroes and the structure of alliances is given in the table \ref{table:aliances}. 
 A complete table defining a matrix of bonuses from the alliances $e_{ijk} $ can be found in our \href{https://github.com/aponom84/UnderLords/blob/master/UnderLordsData.xlsx}{repository} \cite{UnderLordsInput}.
 
 \begin{table}
@@ -410,7 +404,7 @@ We provide a solution of the linear integer programming model defined by the sys
 \begin{table}
 \resizebox{16cm}{!} {
 \begin{tabular}{l| *{8}{p{1.6cm}} | *{3}{ p{1cm}} }
-{Герой} &                   &               &                &                &                &                  &                  &                  &  Alliance contribution &  Hero power &   Sum \\
+{Hero} &                   &               &                &                &                &                  &                  &                  &  Alliance contribution &  Hero power &   Sum \\
 \midrule
 broodmother   &  heartless 2 +0.3  &  human 2 +0.3  &  insect 2 +0.3  &  scaled 2 +0.6  &   troll 2 +0.3  &  warlock  2 +0.6  &  warlock  4 +0.6  &                   &                  3.0 &           3 &   6.0 \\
 disruptor     &  heartless 2 +0.4  &  human 2 +0.4  &  insect 2 +0.4  &  scaled 2 +0.8  &   troll 2 +0.4  &  warlock  2 +0.8  &  warlock  4 +0.8  &                   &                  4.0 &           4 &   8.0 \\
@@ -435,7 +429,7 @@ witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 
 In this paper, we demonstrated how a key to win in popular video game can lie in using linear integer math programming.
 The initial data and the results of solving the model in the form of a Jupyter-notebook can be found in the open repository \ cite {UnderLordsInput}.
 We hope that our article will help to attract the attention of young minds to integer programming, discrete optimization methods, and also to the millennium problem P $ \ neq? $ NP.
-It is important that the mathematical formulation of the problem given by the set of inequalities \ eqref {eq: DUIP} can be considered by itself, abstracting from the domain. And in this paper it is shown that the seemingly NP-hard task, in the Yes / No version, is NP-complete.
+It is important that the mathematical formulation of the problem given by the set of inequalities \ eqref {eq: DUIP} can be considered by itself, abstracting from the domain. And in this paper it is shown that the seemingly NP-hard task, in the ``yes" or ``no" version, is NP-complete.
 Thus, this work contributes to the study of NP-complete problems.
 
 \bibliographystyle{unsrt}
