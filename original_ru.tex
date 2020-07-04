@@ -307,13 +307,13 @@ $\mathcal{F}$ и $\mathcal{F}_2$ бонусы, которые альянс из 
     
     Построим множество $ W^{1, q }$ из $\binom{n}{q}$ вершин, где каждая вершина соответствует неупорядоченной множеству из $q$ героев. Пронумеруем эти вершины в лексикографическом порядке, соответствующему порядку нумерации сочечетаний из $\binom{n}{q}$ элементов $w^1_{ \underbrace{1,2,...,q}_\text{total $q$ indices}}, w^1_{\underbrace{1,2,...,q+1}_\text{total $q$ indices}},..., w^1_{ \underbrace{ n-q, n-q+1,..., n-1,n}_\text{total $q$ indices}} $. То есть у каждого элемента есть ровно $q$ нижних индексов.
 
-    Построим дополнительно $\binom{m}{q}-1$ множеств вершин $W^{1,2,...,q}$, $W^{1,2,q+1}$ и так далее до $W^{n-q, n-q+1,..., n-1,n}$, в каждом из которых также сопоставим по вершине неупорядоченной паре героев задачи DU. Аналогично первому множеству, пронумеруем вершины в множестве $V^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$ как $w_{\underbrace{1,2,...,q}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$, $w_{\underbrace{1,2,...,q+1}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$, ..., $w_{ \underbrace{ n-q, n-q+1,..., n-1,n}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$.
+    Построим дополнительно $\binom{m}{q}-1$ множеств вершин $W^{1,2,...,q}$, $W^{1,2,q+1}$ и так далее до $W^{n-q, n-q+1,..., n-1,n}$, в каждом из которых также сопоставим по вершине неупорядоченной паре героев задачи DU. Аналогично первому множеству, пронумеруем вершины в множестве $W^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$ как $w_{\underbrace{1,2,...,q}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$, $w_{\underbrace{1,2,...,q+1}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$, ..., $w_{ \underbrace{ n-q, n-q+1,..., n-1,n}_\text{total $q$ indices}}^{\overbrace{i,j,k,l,...}^\text{total $q$ indices}}$.
     
     Обозначим семейство этих множеств за $\mathcal{F}_q$. Таким образом мы получим $\binom{m}{q}$ множеств по $\binom{n}{q}$ вершин каждом, при этом в каждом множестве есть по одной вершине, соответствующей каждой паре героев.
     
     Проведём дополнительные рёбра следующим образом --- в графе между вершинами $w_{\underbrace{a, b, c, ....}_\text{total $q$ indices}}^{\overbrace{i,j,k,...}^\text{total $q$ indices}}$ и $w_{\underbrace{a', b', c', ....}_\text{total $q$ indices}}^{\overbrace{i',j',k',...}^\text{total $q$ indices}}$ проводится ребро, если выполняются оба следующих условия:
     \begin{itemize}
-        \item Вершины $w_{a,b,c,...}^{i,j,k...}$ и $w_{a',b',c',...}^{i', j',k',...}$ соответствуют разным парам героев ($a \neq a' \lor b \neq b' \lor c \neq c',...$)
+        \item Вершины $w_{a,b,c,...}^{i,j,k...}$ и $w_{a',b',c',...}^{i', j',k',...}$ соответствуют разным множествам героев ($a \neq a' \lor b \neq b' \lor c \neq c',...$)
         \item Вершины $w_{a,b,c,...}^{i,j,k...}$ и $w_{a',b',c'...}^{i', j',k'...}$ лежат в разных множествах из семейства $F_q$ ($i \neq i' \lor j \neq j' \lor k \neq k',... $)
     \end{itemize}
     
