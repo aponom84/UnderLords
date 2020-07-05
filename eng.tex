@@ -173,15 +173,15 @@ The problem of finding the maximum dense subgraph of $k$ vertices reduces to the
 Consider its special case -- let all the alliances have a size equal to two, and the power of all the heroes is the same. Consider a special case of the Dota Underlords problem with the following restrictions:
 
 \begin{enumerate}
-    \item The power of all heroes is the same ($\forall i, j s_i=s_j$)
-    \item Alliances can give bonuses only to the heroes that belongs to the corresponding alliance. ($\forall i, j, k a_{ij}=0 \Longrightarrow e_{ijk} = 0$)
+    \item The power of all heroes is the same ($\forall i, j \; s_i=s_j$)
+    \item Alliances can give bonuses only to the heroes that belongs to the corresponding alliance. ($\forall i, j, k \; a_{ij}=0 \Longrightarrow e_{ijk} = 0$)
     
-    \item All alliances have the same size equal to two ($\forall j \sum_i a_{ij}=2$)
-    \item All alliances give a bonus if only if they have both heroes ($\forall i, j e_{ij1}=0$)
-    \item Bonuses from all alliances are the same($\forall i, j, i', j' a_{ij}=1, a_{i' j'}=1 \Longrightarrow e_{ij2}=e_{i' j' 2}$)
+    \item All alliances have the same size equal to two ($\forall j \; \sum_i a_{ij}=2 $)
+    \item All alliances give a bonus if only if they have both heroes ($\forall i, j \; e_{ij1}=0$)
+    \item Bonuses from all alliances are the same($\forall i, j, i', j' \; a_{ij}=1,\, a_{i' j'}=1 \Longrightarrow e_{ij2}=e_{i' j' 2}$)
 \end{enumerate}
 
-Then the data can be represented in the form of a graph $ G (V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $ E $ corresponds to active alliances. You may notice that in this case the optimal team of size $ k $ corresponds to the most dense subgraph $ G '\subset G $ with $ k $ vertices. Density in this formulation can be understood as the value $ \frac {G '(E)} {G' (V)} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of active alliances, which corresponds to $ G '(E) $. Since $ k $ is invariable, with the increasing density of the graph $ G '$ the total strength of the team grows.
+Then the data can be represented in the form of a graph $G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to active alliances. You may notice that in this case the optimal team of size $ k $ corresponds to the most dense subgraph $ G' \subset G $ with $ k $ vertices. Density in this formulation can be understood as the value $ \frac{G'(E)}{G'(V)} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of active alliances, which corresponds to $ G'(E)$. Since $ k $ is invariable, with the increasing density of the graph $ G '$ the total strength of the team grows.
 
 It was shown in \cite{downey1995fixed} that the problem of fining subgraph with a fixed size and maximum density is NP-complete. We have shown that it is a special case of the Dota Underlords problem, so it is reducible to Dota Underlords. Therefore the Dota Underlords problem is no less difficult than the well-known NP-complete problem. Thus the Dota Underlords problem is NP-hard.
 
@@ -214,9 +214,7 @@ Theorem \ref{MEWC_DU} states that there exists a polynomial reduction of an NP-c
 \subsection{Reduction from Underlords to maximum edge weighted clique problem}
 While working on the paper, we also found a reduction from the Dota Underlords problem to the well-known problem -- Maximum Edge Weighted Clique (MEWC). Thus, when solving individual instances of the Dota Underlords problem, any one can use the already developed algorithms for the MEWC problem as \cite{san2019new} or efficient quadratic formulations    \cite{hosseinian2017maximum}.
 
-In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$.
-
-The reduction will be proposed throw the series of theorems, where each describes the reduction from less and  less simplified version of DU to the maximum edge-weighted clique problem.
+In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$. The reduction will be proposed throw the series of theorems, where each describes the reduction from less and  less simplified version of DU to the maximum edge-weighted clique problem.
 
 \begin{theorem}
 \label{trivial_case}
@@ -231,7 +229,7 @@ The reduction will be proposed throw the series of theorems, where each describe
    We build edges in the graph as follows --  between the vertices $v_a^i $ and $v_{a'}^{i'} $ an edge is drawn if both of the following conditions are true:
     \begin{itemize}
         \item The vertices $v_a^i $ and $v_{a'}^{i'} $ correspond to different heroes ($a \neq a'$)
-        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ lie in different sets from the family $F$ ($ i \neq i /'$)
+        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ lie in different sets from the family $\mathcal{F}$ ($ i \neq i /'$)
     \end{itemize}
 
     Consider all the maximum clique in this graph. Obviously, in any such clique there are exactly one vertex from each set $ V^i $ -- total $m$ vertices. Also, all these vertexes correspond to different heroes. Thus, each clique sets a team of heroes in the DU task. It should be noted that each team can correspond to a few cliques.
@@ -257,8 +255,16 @@ We construct a graph $G'$ with weighted edges in such way that the solution of t
         \item The vertices $ w_ {a,b}^{i, j} $ and $w_{a', b'} ^{i', j'} $ lie in different sets from the family $ F_2 $ ($ i \neq i '\lor j \neq j' $)
     \end{itemize}
     
-    We also build all edges between all the vertices of the sets $F$ and $F_2$. We assign a weight of 0 to all these new edges. Evidently, any maximal clique contains one vertex from each of the sets $V$ and $W$ of the families $ \mathcal {F} $ and $ \mathcal {F}_2 $. \\
-    Assign to each edge  $ (v_a^ k, w_ {a, b}^{i, j}) $ or $ (v_b^k, w_ {ab}^{i,j}) $ some big constant weight $N$. These edges connect a vertex from the family $\mathcal{F}$ corresponding to a certain hero with a vertex from the family $ F_2 $ corresponding to a pair of heroes where this hero belongs.
+    We also build all edges between all the vertices of the sets $F$ and $F_2$. We assign a weight of 0 to all these new edges. Evidently, any maximal clique contains one vertex from each of the sets $V$ and $W$ of the families $ \mathcal {F} $ and $ \mathcal{F}_2 $. \\
+    Assign to each edge  $ (v_a^k, w_{a,b}^{i, j}) $ or $ (v_b^k, w_{a,b}^{i,j}) $ some big constant weight $N$. These edges connect a vertex from the family $\mathcal{F}$ corresponding to a certain hero with a vertex from the family $ F_2 $ corresponding to a pair of heroes where this hero belongs. See the figure \ref{fig:reduction} for example of graph $G'$.
+    
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[height=4in,width=3in,angle=0]{figure1.pdf}
+\caption{An example of graph $G'$ including sets $\mathcal{F}$ and $\mathcal{F}$ for the case $n=4$, $m=3$, $q=2$. The edges between every vertex of sets $\mathcal{F}$ and $\mathcal{F}$ are avoided for picture simplicity. The size of the maximal clique is 6. }
+\label{fig:reduction}
+\end{center}
+\end{figure}
     
     Now we are going to show that any maximal clique in graph $G'$ containing a set of vertices from the family $\mathcal{F}$ corresponding to then set of heroes also contains the set of vertices from the family $\mathcal {F}_2$ corresponding to all pairs of heroes from this team. In this clique, the edges connecting the vertices from the families $\mathcal{F}$ and $ \mathcal {F}_2$ make a total contribution to the weight equals to $2 \binom{n}{2} N$, because maximum clique includes exactly $2 \binom {n} {2}$ edges with additional big weight $N$ -- two incident to each vertex from $\mathcal {F}_2$.
     
