@@ -411,11 +411,15 @@ witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 
 
 \section{Conclusion}
 \label{SectionConclusion}
-In this paper, we demonstrated how a key to winning in a video game can lie in using linear integer  programming model.
-The initial data and the results of solving the model in the form of a Jupyter-notebook can be found in our open repository \cite{UnderLordsInput}.
-We hope that this article will help to attract the attention of young minds to integer programming, discrete optimization methods, and also to the millennium problem P $ \neq? $ NP.
-It is important that the mathematical formulation of the problem given by the set of inequalities \eqref{eq:DUIP} can be considered by itself, abstracting from the domain. And in this paper, it is shown that the seemingly NP-hard task, in the ``yes" or ``no" version, is NP-complete.
-Thus, this work contributes to the study of NP-complete problems.
+%I believe that the conclusions section should re-written by omitting the hopes of the authors, discussions of their contribution to the theory of NP-completeness and etc. They should focus on description of their results and perspectives of the research
+
+
+
+In this paper, we demonstrated how a key to winning in a video game can lie in using linear integer  programming model. We have described gameplay of the Dota Underlords, and have proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay. We have proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC. Also we have made assumptions about heroes strengths, and values of alliance bonuses. Based on this data we have found the exact solution of the proposed model with using IP-solver. 
+
+The values of heroes  strengths, alliance bonuses, and  the results of solved the IP-model in the form of a Jupyter-notebook can be found in our pubic repository \cite{UnderLordsInput}.
+
+%... and perspectives of the research
 
 \section{Acknowledgements}
 
