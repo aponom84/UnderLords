@@ -81,7 +81,7 @@ In some sense, every NP-complete problem is a puzzle, and vice-verse, many puzzl
 In this paper, we consider the popular video game Dota Unlderlords. It is one of the so-called auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which decision version  belongs to the class NP-complete.
 
 The article is organized as follows. In section \ref{SectionDUDescription} Dota Underlords gameplay is described.
-We present a formulation of the Dota Underlords problem as the linear integer programming model in section \ref{SectionDUIP}. In the \ref{SectionNPCompleteProof} section, we show the NP-completeness of this task and reduce the problem to the maximum edge-weighted clique problem (MEWC). The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} ``Conclusion".
+We present a formulation of the Dota Underlords problem (DU problem) as the linear integer programming model in section \ref{SectionDUIP}. In the \ref{SectionNPCompleteProof} section, we show the NP-completeness of this task and reduce the problem to the maximum edge-weighted clique problem (MEWC). The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} ``Conclusion".
 
 \section{Dota Underlords game play description}
 \label{SectionDUDescription}
@@ -163,12 +163,12 @@ a_{ij} \in \{0, 1\} \text{ -- indicates if hero } i \text{ belongs to the allian
 \end{gathered}
 \end{equation}
 
-\section{Proof of an NP-completeness of the Dota Underlords problem}
+\section{Proof of an NP-completeness of the DU problem}
 \label{SectionNPCompleteProof}
 
 To prove that a problem is NP-complete, it is necessary to show that it is both an NP-hard problem and that it belongs to the NP class. Let's us prove both statements.
 
-\subsection{Polynomial-time reduction from the Maximum Density Sub-Graph Problem to the Dota Underlords problem}
+\subsection{Polynomial-time reduction from the Maximum Density Sub-Graph Problem to the DU problem}
 
 The problem of finding a set of $k$ vertices with the most edges in the subgraph induced by this set is called the maximum dense subgraph of $k$ vertices problem \cite{kortsarz1993choosing}.  Obviously this problem is NP-hard by reduction from clique. 
 
@@ -180,7 +180,7 @@ The problem of finding the maximum dense subgraph of $k$ vertices reduces to the
 \end{theorem}
 \begin{proof}
 
-Consider its special case --- let all the alliances have a size equal to two, and the power of all the heroes is the same. Consider a special case of the Dota Underlords problem with the following restrictions:
+Consider its special case --- let all the alliances have a size equal to two, and the power of all the heroes is the same. Consider a special case of the DU problem with the following restrictions:
 
 \begin{enumerate}
     \item The power of all heroes is the same ($\forall i, j \; s_i=s_j$)
@@ -193,15 +193,15 @@ Consider its special case --- let all the alliances have a size equal to two, an
 
 Then the data can be represented in the form of a graph $G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the active alliances. You may notice that in this case, the optimal team of size $ k $ corresponds to the densest subgraph $ G' \subset G $ with $ k $ vertices. Density in this formulation can be understood as the value $ \frac{|G'(E)|}{|G'(V)|} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of active alliances, which corresponds to $ G'(E)$. Since $ k $ is invariable, with the increasing density of the graph $ G '$ the total strength of the team grows.
 
-It was shown in \cite{downey1995fixed} that the problem of fining subgraph with a fixed size and maximum density is NP-complete. We have shown that it is a special case of the Dota Underlords problem, so it is reducible to Dota Underlords. Therefore the Dota Underlords problem is no less difficult than the well-known NP-complete problem. Thus the Dota Underlords problem is NP-hard.
+It was shown in \cite{downey1995fixed} that the problem of fining subgraph with a fixed size and maximum density is NP-complete. We have shown that it is a special case of the DU problem, so it is reducible to DU problem. Therefore the DU problem is no less difficult than the well-known NP-complete problem. Thus the DU problem is NP-hard.
 
 \end{proof}
 
 \subsection{Dota Underlords belongs to NP-class}
-The decision version of Dota Underlords problem (problem with the answer ``yes" or ``no") can be formulated as follows: ``\textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}". Then, we are ready to state the following theorem.
+The decision version of DU problem (problem with the answer ``yes" or ``no") can be formulated as follows: ``\textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}". Then, we are ready to state the following theorem.
 \begin{theorem}
 \label{DU_is_NP}
-The decision version of Dota Underlords problem belongs to the  NP class.
+The decision version of DU problem belongs to the  NP class.
 \end{theorem}
 \begin{proof}
 
@@ -212,17 +212,17 @@ So, we just need to calculate the objective function. In turn, to do that, at fi
 After that, the objective function can be calculated in a straightforward way by $O(ntq)$ number of operations. Thus, we need can check the solution for the polynomial time on the input size. 
 \end{proof}
 
-\subsection{NP-completeness of Dota Underlords problem}
+\subsection{NP-completeness of DU problem}
 \begin{theorem}
-	The Dota Underlords problem defined by the system of inequalities \eqref{eq:DUIP}  belongs to the class of NP-complete problems.
+	The DU problem defined by the system of inequalities \eqref{eq:DUIP}  belongs to the class of NP-complete problems.
 \end{theorem}
 
 \begin{proof}
-Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-complete problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of Dota Underlords problem is NP-complete.	
+Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-complete problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of DU problem is NP-complete.	
 \end{proof}
 
-\section{Polynomial-Time Reduction from the Dota Underlords problem to the MEWC}
-While working on the paper, we also found a polynomial-time reduction of the Dota Underlords problem to the well-known problem --- Maximum Edge-Weighted Clique (MEWC). Thus, when solving individual instances of the Dota Underlords problem, anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or efficient quadratic formulations from \cite{hosseinian2017maximum}.
+\section{Polynomial-Time Reduction from the DU problem to the MEWC}
+While working on the paper, we also found a polynomial-time reduction of the DU problem to the well-known problem --- Maximum Edge-Weighted Clique (MEWC). Thus, when solving individual instances of the DU problem, anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or efficient quadratic formulations from \cite{hosseinian2017maximum}.
 
 In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$. The reduction will be proposed through the series of theorems, where each theorem describes the reduction from a less and less simplified version of DU to the MEWC.
 
@@ -242,7 +242,7 @@ In this reduction, we will consider a problem with the maximum size of the allia
 
 \begin{theorem}
 \label{general_case}
-    Dota Underlords problem with alliances of size $q$, reduces to the MEWC.
+    DU problem with alliances of size $q$, reduces to the MEWC.
 \end{theorem}
 	The proof will be constructed similarly to the proof of the theorem \ref {second_case}.
 We will create additional vertices associated with all possible combinations of $q$ heroes. The bonuses from the formation of the corresponding alliances will be the same as in the theorem \ref {second_case} is on the edges.
@@ -292,7 +292,7 @@ Thus, the weight of the clique corresponds to the total bonus from the team, fro
 \section{Model application for real data}
 \label{SectionComputationalResults}
   
-We apply this model to analyze the real Dota Underlords problem. Note that our result should not be considered as some objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes’ power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when various conditions satisfied, and in addition, the ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers", arranged so that the characters inside the tier are approximately equal in strength.
+We apply this model to analyze the real DU problem. Note that our result should not be considered as some objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes’ power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when various conditions satisfied, and in addition, the ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers", arranged so that the characters inside the tier are approximately equal in strength.
 
 Within the simplified model, we accept the following:
 \begin{enumerate}
