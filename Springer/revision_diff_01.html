@@ -1,0 +1,590 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+pre { white-space: pre-wrap; }
+.ef0,.f0 { color: #000000; } .eb0,.b0 { background-color: #000000; }
+.ef1,.f1 { color: #AA0000; } .eb1,.b1 { background-color: #AA0000; }
+.ef2,.f2 { color: #00AA00; } .eb2,.b2 { background-color: #00AA00; }
+.ef3,.f3 { color: #AA5500; } .eb3,.b3 { background-color: #AA5500; }
+.ef4,.f4 { color: #0000AA; } .eb4,.b4 { background-color: #0000AA; }
+.ef5,.f5 { color: #AA00AA; } .eb5,.b5 { background-color: #AA00AA; }
+.ef6,.f6 { color: #00AAAA; } .eb6,.b6 { background-color: #00AAAA; }
+.ef7,.f7 { color: #AAAAAA; } .eb7,.b7 { background-color: #AAAAAA; }
+.ef8, .f0 > .bold,.bold > .f0 { color: #555555; font-weight: normal; }
+.ef9, .f1 > .bold,.bold > .f1 { color: #FF5555; font-weight: normal; }
+.ef10,.f2 > .bold,.bold > .f2 { color: #55FF55; font-weight: normal; }
+.ef11,.f3 > .bold,.bold > .f3 { color: #FFFF55; font-weight: normal; }
+.ef12,.f4 > .bold,.bold > .f4 { color: #5555FF; font-weight: normal; }
+.ef13,.f5 > .bold,.bold > .f5 { color: #FF55FF; font-weight: normal; }
+.ef14,.f6 > .bold,.bold > .f6 { color: #55FFFF; font-weight: normal; }
+.ef15,.f7 > .bold,.bold > .f7 { color: #FFFFFF; font-weight: normal; }
+.eb8  { background-color: #555555; }
+.eb9  { background-color: #FF5555; }
+.eb10 { background-color: #55FF55; }
+.eb11 { background-color: #FFFF55; }
+.eb12 { background-color: #5555FF; }
+.eb13 { background-color: #FF55FF; }
+.eb14 { background-color: #55FFFF; }
+.eb15 { background-color: #FFFFFF; }
+.ef16 { color: #000000; } .eb16 { background-color: #000000; }
+.ef17 { color: #00005f; } .eb17 { background-color: #00005f; }
+.ef18 { color: #000087; } .eb18 { background-color: #000087; }
+.ef19 { color: #0000af; } .eb19 { background-color: #0000af; }
+.ef20 { color: #0000d7; } .eb20 { background-color: #0000d7; }
+.ef21 { color: #0000ff; } .eb21 { background-color: #0000ff; }
+.ef22 { color: #005f00; } .eb22 { background-color: #005f00; }
+.ef23 { color: #005f5f; } .eb23 { background-color: #005f5f; }
+.ef24 { color: #005f87; } .eb24 { background-color: #005f87; }
+.ef25 { color: #005faf; } .eb25 { background-color: #005faf; }
+.ef26 { color: #005fd7; } .eb26 { background-color: #005fd7; }
+.ef27 { color: #005fff; } .eb27 { background-color: #005fff; }
+.ef28 { color: #008700; } .eb28 { background-color: #008700; }
+.ef29 { color: #00875f; } .eb29 { background-color: #00875f; }
+.ef30 { color: #008787; } .eb30 { background-color: #008787; }
+.ef31 { color: #0087af; } .eb31 { background-color: #0087af; }
+.ef32 { color: #0087d7; } .eb32 { background-color: #0087d7; }
+.ef33 { color: #0087ff; } .eb33 { background-color: #0087ff; }
+.ef34 { color: #00af00; } .eb34 { background-color: #00af00; }
+.ef35 { color: #00af5f; } .eb35 { background-color: #00af5f; }
+.ef36 { color: #00af87; } .eb36 { background-color: #00af87; }
+.ef37 { color: #00afaf; } .eb37 { background-color: #00afaf; }
+.ef38 { color: #00afd7; } .eb38 { background-color: #00afd7; }
+.ef39 { color: #00afff; } .eb39 { background-color: #00afff; }
+.ef40 { color: #00d700; } .eb40 { background-color: #00d700; }
+.ef41 { color: #00d75f; } .eb41 { background-color: #00d75f; }
+.ef42 { color: #00d787; } .eb42 { background-color: #00d787; }
+.ef43 { color: #00d7af; } .eb43 { background-color: #00d7af; }
+.ef44 { color: #00d7d7; } .eb44 { background-color: #00d7d7; }
+.ef45 { color: #00d7ff; } .eb45 { background-color: #00d7ff; }
+.ef46 { color: #00ff00; } .eb46 { background-color: #00ff00; }
+.ef47 { color: #00ff5f; } .eb47 { background-color: #00ff5f; }
+.ef48 { color: #00ff87; } .eb48 { background-color: #00ff87; }
+.ef49 { color: #00ffaf; } .eb49 { background-color: #00ffaf; }
+.ef50 { color: #00ffd7; } .eb50 { background-color: #00ffd7; }
+.ef51 { color: #00ffff; } .eb51 { background-color: #00ffff; }
+.ef52 { color: #5f0000; } .eb52 { background-color: #5f0000; }
+.ef53 { color: #5f005f; } .eb53 { background-color: #5f005f; }
+.ef54 { color: #5f0087; } .eb54 { background-color: #5f0087; }
+.ef55 { color: #5f00af; } .eb55 { background-color: #5f00af; }
+.ef56 { color: #5f00d7; } .eb56 { background-color: #5f00d7; }
+.ef57 { color: #5f00ff; } .eb57 { background-color: #5f00ff; }
+.ef58 { color: #5f5f00; } .eb58 { background-color: #5f5f00; }
+.ef59 { color: #5f5f5f; } .eb59 { background-color: #5f5f5f; }
+.ef60 { color: #5f5f87; } .eb60 { background-color: #5f5f87; }
+.ef61 { color: #5f5faf; } .eb61 { background-color: #5f5faf; }
+.ef62 { color: #5f5fd7; } .eb62 { background-color: #5f5fd7; }
+.ef63 { color: #5f5fff; } .eb63 { background-color: #5f5fff; }
+.ef64 { color: #5f8700; } .eb64 { background-color: #5f8700; }
+.ef65 { color: #5f875f; } .eb65 { background-color: #5f875f; }
+.ef66 { color: #5f8787; } .eb66 { background-color: #5f8787; }
+.ef67 { color: #5f87af; } .eb67 { background-color: #5f87af; }
+.ef68 { color: #5f87d7; } .eb68 { background-color: #5f87d7; }
+.ef69 { color: #5f87ff; } .eb69 { background-color: #5f87ff; }
+.ef70 { color: #5faf00; } .eb70 { background-color: #5faf00; }
+.ef71 { color: #5faf5f; } .eb71 { background-color: #5faf5f; }
+.ef72 { color: #5faf87; } .eb72 { background-color: #5faf87; }
+.ef73 { color: #5fafaf; } .eb73 { background-color: #5fafaf; }
+.ef74 { color: #5fafd7; } .eb74 { background-color: #5fafd7; }
+.ef75 { color: #5fafff; } .eb75 { background-color: #5fafff; }
+.ef76 { color: #5fd700; } .eb76 { background-color: #5fd700; }
+.ef77 { color: #5fd75f; } .eb77 { background-color: #5fd75f; }
+.ef78 { color: #5fd787; } .eb78 { background-color: #5fd787; }
+.ef79 { color: #5fd7af; } .eb79 { background-color: #5fd7af; }
+.ef80 { color: #5fd7d7; } .eb80 { background-color: #5fd7d7; }
+.ef81 { color: #5fd7ff; } .eb81 { background-color: #5fd7ff; }
+.ef82 { color: #5fff00; } .eb82 { background-color: #5fff00; }
+.ef83 { color: #5fff5f; } .eb83 { background-color: #5fff5f; }
+.ef84 { color: #5fff87; } .eb84 { background-color: #5fff87; }
+.ef85 { color: #5fffaf; } .eb85 { background-color: #5fffaf; }
+.ef86 { color: #5fffd7; } .eb86 { background-color: #5fffd7; }
+.ef87 { color: #5fffff; } .eb87 { background-color: #5fffff; }
+.ef88 { color: #870000; } .eb88 { background-color: #870000; }
+.ef89 { color: #87005f; } .eb89 { background-color: #87005f; }
+.ef90 { color: #870087; } .eb90 { background-color: #870087; }
+.ef91 { color: #8700af; } .eb91 { background-color: #8700af; }
+.ef92 { color: #8700d7; } .eb92 { background-color: #8700d7; }
+.ef93 { color: #8700ff; } .eb93 { background-color: #8700ff; }
+.ef94 { color: #875f00; } .eb94 { background-color: #875f00; }
+.ef95 { color: #875f5f; } .eb95 { background-color: #875f5f; }
+.ef96 { color: #875f87; } .eb96 { background-color: #875f87; }
+.ef97 { color: #875faf; } .eb97 { background-color: #875faf; }
+.ef98 { color: #875fd7; } .eb98 { background-color: #875fd7; }
+.ef99 { color: #875fff; } .eb99 { background-color: #875fff; }
+.ef100 { color: #878700; } .eb100 { background-color: #878700; }
+.ef101 { color: #87875f; } .eb101 { background-color: #87875f; }
+.ef102 { color: #878787; } .eb102 { background-color: #878787; }
+.ef103 { color: #8787af; } .eb103 { background-color: #8787af; }
+.ef104 { color: #8787d7; } .eb104 { background-color: #8787d7; }
+.ef105 { color: #8787ff; } .eb105 { background-color: #8787ff; }
+.ef106 { color: #87af00; } .eb106 { background-color: #87af00; }
+.ef107 { color: #87af5f; } .eb107 { background-color: #87af5f; }
+.ef108 { color: #87af87; } .eb108 { background-color: #87af87; }
+.ef109 { color: #87afaf; } .eb109 { background-color: #87afaf; }
+.ef110 { color: #87afd7; } .eb110 { background-color: #87afd7; }
+.ef111 { color: #87afff; } .eb111 { background-color: #87afff; }
+.ef112 { color: #87d700; } .eb112 { background-color: #87d700; }
+.ef113 { color: #87d75f; } .eb113 { background-color: #87d75f; }
+.ef114 { color: #87d787; } .eb114 { background-color: #87d787; }
+.ef115 { color: #87d7af; } .eb115 { background-color: #87d7af; }
+.ef116 { color: #87d7d7; } .eb116 { background-color: #87d7d7; }
+.ef117 { color: #87d7ff; } .eb117 { background-color: #87d7ff; }
+.ef118 { color: #87ff00; } .eb118 { background-color: #87ff00; }
+.ef119 { color: #87ff5f; } .eb119 { background-color: #87ff5f; }
+.ef120 { color: #87ff87; } .eb120 { background-color: #87ff87; }
+.ef121 { color: #87ffaf; } .eb121 { background-color: #87ffaf; }
+.ef122 { color: #87ffd7; } .eb122 { background-color: #87ffd7; }
+.ef123 { color: #87ffff; } .eb123 { background-color: #87ffff; }
+.ef124 { color: #af0000; } .eb124 { background-color: #af0000; }
+.ef125 { color: #af005f; } .eb125 { background-color: #af005f; }
+.ef126 { color: #af0087; } .eb126 { background-color: #af0087; }
+.ef127 { color: #af00af; } .eb127 { background-color: #af00af; }
+.ef128 { color: #af00d7; } .eb128 { background-color: #af00d7; }
+.ef129 { color: #af00ff; } .eb129 { background-color: #af00ff; }
+.ef130 { color: #af5f00; } .eb130 { background-color: #af5f00; }
+.ef131 { color: #af5f5f; } .eb131 { background-color: #af5f5f; }
+.ef132 { color: #af5f87; } .eb132 { background-color: #af5f87; }
+.ef133 { color: #af5faf; } .eb133 { background-color: #af5faf; }
+.ef134 { color: #af5fd7; } .eb134 { background-color: #af5fd7; }
+.ef135 { color: #af5fff; } .eb135 { background-color: #af5fff; }
+.ef136 { color: #af8700; } .eb136 { background-color: #af8700; }
+.ef137 { color: #af875f; } .eb137 { background-color: #af875f; }
+.ef138 { color: #af8787; } .eb138 { background-color: #af8787; }
+.ef139 { color: #af87af; } .eb139 { background-color: #af87af; }
+.ef140 { color: #af87d7; } .eb140 { background-color: #af87d7; }
+.ef141 { color: #af87ff; } .eb141 { background-color: #af87ff; }
+.ef142 { color: #afaf00; } .eb142 { background-color: #afaf00; }
+.ef143 { color: #afaf5f; } .eb143 { background-color: #afaf5f; }
+.ef144 { color: #afaf87; } .eb144 { background-color: #afaf87; }
+.ef145 { color: #afafaf; } .eb145 { background-color: #afafaf; }
+.ef146 { color: #afafd7; } .eb146 { background-color: #afafd7; }
+.ef147 { color: #afafff; } .eb147 { background-color: #afafff; }
+.ef148 { color: #afd700; } .eb148 { background-color: #afd700; }
+.ef149 { color: #afd75f; } .eb149 { background-color: #afd75f; }
+.ef150 { color: #afd787; } .eb150 { background-color: #afd787; }
+.ef151 { color: #afd7af; } .eb151 { background-color: #afd7af; }
+.ef152 { color: #afd7d7; } .eb152 { background-color: #afd7d7; }
+.ef153 { color: #afd7ff; } .eb153 { background-color: #afd7ff; }
+.ef154 { color: #afff00; } .eb154 { background-color: #afff00; }
+.ef155 { color: #afff5f; } .eb155 { background-color: #afff5f; }
+.ef156 { color: #afff87; } .eb156 { background-color: #afff87; }
+.ef157 { color: #afffaf; } .eb157 { background-color: #afffaf; }
+.ef158 { color: #afffd7; } .eb158 { background-color: #afffd7; }
+.ef159 { color: #afffff; } .eb159 { background-color: #afffff; }
+.ef160 { color: #d70000; } .eb160 { background-color: #d70000; }
+.ef161 { color: #d7005f; } .eb161 { background-color: #d7005f; }
+.ef162 { color: #d70087; } .eb162 { background-color: #d70087; }
+.ef163 { color: #d700af; } .eb163 { background-color: #d700af; }
+.ef164 { color: #d700d7; } .eb164 { background-color: #d700d7; }
+.ef165 { color: #d700ff; } .eb165 { background-color: #d700ff; }
+.ef166 { color: #d75f00; } .eb166 { background-color: #d75f00; }
+.ef167 { color: #d75f5f; } .eb167 { background-color: #d75f5f; }
+.ef168 { color: #d75f87; } .eb168 { background-color: #d75f87; }
+.ef169 { color: #d75faf; } .eb169 { background-color: #d75faf; }
+.ef170 { color: #d75fd7; } .eb170 { background-color: #d75fd7; }
+.ef171 { color: #d75fff; } .eb171 { background-color: #d75fff; }
+.ef172 { color: #d78700; } .eb172 { background-color: #d78700; }
+.ef173 { color: #d7875f; } .eb173 { background-color: #d7875f; }
+.ef174 { color: #d78787; } .eb174 { background-color: #d78787; }
+.ef175 { color: #d787af; } .eb175 { background-color: #d787af; }
+.ef176 { color: #d787d7; } .eb176 { background-color: #d787d7; }
+.ef177 { color: #d787ff; } .eb177 { background-color: #d787ff; }
+.ef178 { color: #d7af00; } .eb178 { background-color: #d7af00; }
+.ef179 { color: #d7af5f; } .eb179 { background-color: #d7af5f; }
+.ef180 { color: #d7af87; } .eb180 { background-color: #d7af87; }
+.ef181 { color: #d7afaf; } .eb181 { background-color: #d7afaf; }
+.ef182 { color: #d7afd7; } .eb182 { background-color: #d7afd7; }
+.ef183 { color: #d7afff; } .eb183 { background-color: #d7afff; }
+.ef184 { color: #d7d700; } .eb184 { background-color: #d7d700; }
+.ef185 { color: #d7d75f; } .eb185 { background-color: #d7d75f; }
+.ef186 { color: #d7d787; } .eb186 { background-color: #d7d787; }
+.ef187 { color: #d7d7af; } .eb187 { background-color: #d7d7af; }
+.ef188 { color: #d7d7d7; } .eb188 { background-color: #d7d7d7; }
+.ef189 { color: #d7d7ff; } .eb189 { background-color: #d7d7ff; }
+.ef190 { color: #d7ff00; } .eb190 { background-color: #d7ff00; }
+.ef191 { color: #d7ff5f; } .eb191 { background-color: #d7ff5f; }
+.ef192 { color: #d7ff87; } .eb192 { background-color: #d7ff87; }
+.ef193 { color: #d7ffaf; } .eb193 { background-color: #d7ffaf; }
+.ef194 { color: #d7ffd7; } .eb194 { background-color: #d7ffd7; }
+.ef195 { color: #d7ffff; } .eb195 { background-color: #d7ffff; }
+.ef196 { color: #ff0000; } .eb196 { background-color: #ff0000; }
+.ef197 { color: #ff005f; } .eb197 { background-color: #ff005f; }
+.ef198 { color: #ff0087; } .eb198 { background-color: #ff0087; }
+.ef199 { color: #ff00af; } .eb199 { background-color: #ff00af; }
+.ef200 { color: #ff00d7; } .eb200 { background-color: #ff00d7; }
+.ef201 { color: #ff00ff; } .eb201 { background-color: #ff00ff; }
+.ef202 { color: #ff5f00; } .eb202 { background-color: #ff5f00; }
+.ef203 { color: #ff5f5f; } .eb203 { background-color: #ff5f5f; }
+.ef204 { color: #ff5f87; } .eb204 { background-color: #ff5f87; }
+.ef205 { color: #ff5faf; } .eb205 { background-color: #ff5faf; }
+.ef206 { color: #ff5fd7; } .eb206 { background-color: #ff5fd7; }
+.ef207 { color: #ff5fff; } .eb207 { background-color: #ff5fff; }
+.ef208 { color: #ff8700; } .eb208 { background-color: #ff8700; }
+.ef209 { color: #ff875f; } .eb209 { background-color: #ff875f; }
+.ef210 { color: #ff8787; } .eb210 { background-color: #ff8787; }
+.ef211 { color: #ff87af; } .eb211 { background-color: #ff87af; }
+.ef212 { color: #ff87d7; } .eb212 { background-color: #ff87d7; }
+.ef213 { color: #ff87ff; } .eb213 { background-color: #ff87ff; }
+.ef214 { color: #ffaf00; } .eb214 { background-color: #ffaf00; }
+.ef215 { color: #ffaf5f; } .eb215 { background-color: #ffaf5f; }
+.ef216 { color: #ffaf87; } .eb216 { background-color: #ffaf87; }
+.ef217 { color: #ffafaf; } .eb217 { background-color: #ffafaf; }
+.ef218 { color: #ffafd7; } .eb218 { background-color: #ffafd7; }
+.ef219 { color: #ffafff; } .eb219 { background-color: #ffafff; }
+.ef220 { color: #ffd700; } .eb220 { background-color: #ffd700; }
+.ef221 { color: #ffd75f; } .eb221 { background-color: #ffd75f; }
+.ef222 { color: #ffd787; } .eb222 { background-color: #ffd787; }
+.ef223 { color: #ffd7af; } .eb223 { background-color: #ffd7af; }
+.ef224 { color: #ffd7d7; } .eb224 { background-color: #ffd7d7; }
+.ef225 { color: #ffd7ff; } .eb225 { background-color: #ffd7ff; }
+.ef226 { color: #ffff00; } .eb226 { background-color: #ffff00; }
+.ef227 { color: #ffff5f; } .eb227 { background-color: #ffff5f; }
+.ef228 { color: #ffff87; } .eb228 { background-color: #ffff87; }
+.ef229 { color: #ffffaf; } .eb229 { background-color: #ffffaf; }
+.ef230 { color: #ffffd7; } .eb230 { background-color: #ffffd7; }
+.ef231 { color: #ffffff; } .eb231 { background-color: #ffffff; }
+.ef232 { color: #080808; } .eb232 { background-color: #080808; }
+.ef233 { color: #121212; } .eb233 { background-color: #121212; }
+.ef234 { color: #1c1c1c; } .eb234 { background-color: #1c1c1c; }
+.ef235 { color: #262626; } .eb235 { background-color: #262626; }
+.ef236 { color: #303030; } .eb236 { background-color: #303030; }
+.ef237 { color: #3a3a3a; } .eb237 { background-color: #3a3a3a; }
+.ef238 { color: #444444; } .eb238 { background-color: #444444; }
+.ef239 { color: #4e4e4e; } .eb239 { background-color: #4e4e4e; }
+.ef240 { color: #585858; } .eb240 { background-color: #585858; }
+.ef241 { color: #626262; } .eb241 { background-color: #626262; }
+.ef242 { color: #6c6c6c; } .eb242 { background-color: #6c6c6c; }
+.ef243 { color: #767676; } .eb243 { background-color: #767676; }
+.ef244 { color: #808080; } .eb244 { background-color: #808080; }
+.ef245 { color: #8a8a8a; } .eb245 { background-color: #8a8a8a; }
+.ef246 { color: #949494; } .eb246 { background-color: #949494; }
+.ef247 { color: #9e9e9e; } .eb247 { background-color: #9e9e9e; }
+.ef248 { color: #a8a8a8; } .eb248 { background-color: #a8a8a8; }
+.ef249 { color: #b2b2b2; } .eb249 { background-color: #b2b2b2; }
+.ef250 { color: #bcbcbc; } .eb250 { background-color: #bcbcbc; }
+.ef251 { color: #c6c6c6; } .eb251 { background-color: #c6c6c6; }
+.ef252 { color: #d0d0d0; } .eb252 { background-color: #d0d0d0; }
+.ef253 { color: #dadada; } .eb253 { background-color: #dadada; }
+.ef254 { color: #e4e4e4; } .eb254 { background-color: #e4e4e4; }
+.ef255 { color: #eeeeee; } .eb255 { background-color: #eeeeee; }
+
+.f9 { color: #000000; }
+.b9 { background-color: #FFFFFF; }
+.f9 > .bold,.bold > .f9, body.f9 > pre > .bold {
+  /* Bold is heavy black on white, or bright white
+     depending on the default background */
+  color: #000000;
+  font-weight: bold;
+}
+.reverse {
+  /* CSS does not support swapping fg and bg colours unfortunately,
+     so just hardcode something that will look OK on all backgrounds. */
+  color: #000000; background-color: #AAAAAA;
+}
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.blink { text-decoration: blink; }
+
+/* Avoid pixels between adjacent span elements.
+   Note this only works for lines less than 80 chars
+   where we close span elements on the same line.
+span { display: inline-block; }
+*/
+</style>
+</head>
+
+<body class="f9 b9">
+<pre>
+<span class="bold">diff --git a/Springer/optimisation_latter.tex b/Springer/optimisation_latter.tex
+index aba56ae..171a3b4 100644</span>
+<span class="bold">--- a/Springer/optimisation_latter.tex</span>
+<span class="bold">+++ b/Springer/optimisation_latter.tex</span>
+<span class="f6">@@ -32,11 +32,11 @@</span>
+
+
+\author{
+<span class="f1">Alexander A. ~Ponomarenko,</span>  Dmitry V. <span class="f1">~Sirotkin</span><span class="f2">~Sirotkin, Alexander A. ~Ponomarenko</span>  \\
+  Laboratory of Algorithms and Technologies for Network Analysis\\
+  National Research University Higher School of Economics \\
+  136 Rodionova street, Nizhny Novgorod, Russia\\
+  <span class="f1">\texttt{aponomarenko@hse.ru, dsirotkin@hse.ru}</span><span class="f2">\texttt{dsirotkin@hse.ru, aponomarenko@hse.ru}</span> \\
+  %% examples of more authors
+  %% \AND
+  %% Coauthor \\
+<span class="f6">@@ -71,27 +71,25 @@</span> In this paper, we demonstrate how the optimal team choice problem in the popular
+
+
+\section{Introduction}
+People love to play games. Many games and puzzles that people play are interesting <span class="f1">by its</span><span class="f2">due to their</span> complexity: you need to be smart enough to solve it. In many cases, such complexity can be expressed as <span class="f1">the computational</span><span class="f2">computation</span> complexity depending on the input size. For example, it <span class="f1">has been</span><span class="f2">was</span> shown <span class="f2">that the puzzle ``Sokoban&quot; is polynomially solvable \cite{hearn2005pspace}; in</span> \cite{fraenkel1981computing} <span class="f2">authors proved</span> that the chess game belongs to the EXPTIME <span class="f1">class complexity.
+The</span><span class="f2">complexity class. </span>
+<span class="f2">In turn,</span> NP-complete computational class has a special place in theoretical computer science.<span class="f1">It was shown that the puzzle ``Sokoban&quot;  has polynomially solvable \cite{hearn2005pspace}.</span>
+In \cite{breukelaar2004tetris} <span class="f1">has been</span><span class="f2">was</span> proved that the optimally playing offline version of legendary video game ``Tetris&quot; is NP-complete. As well, it was found in \cite{kaye2000minesweeper} that ``Minesweeper&quot; belongs to<span class="f1">the</span> NP-complete class. <span class="f1">The decision</span><span class="f2">Decision</span> version of the problem of finding a minimal number of chip movements in a generalized version of 15-puzzle for the board with size $N \times N$ belongs is NP-complete also \cite{ratner1986finding}.
+
+In some sense, every NP-complete problem is a puzzle, and vice-verse, many puzzles are NP-complete. We refer reader to the surveys \cite{costa2018computational}, \cite{kendall2008survey} for<span class="f1">a</span> deeper study<span class="f1">of the topic of the</span> computational complexity of puzzles and <span class="f1">games,</span><span class="f2">games.</span>
+
+In this paper, we consider the popular video game Dota Unlderlords. It is one of the so-called auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which decision version  belongs to the class NP-complete.
+
+The article is organized as follows. In section \ref{SectionDUDescription} Dota Underlords gameplay is described.
+We present a formulation of the Dota Underlords problem <span class="f2">(DU problem)</span> as the linear integer programming model in section \ref{SectionDUIP}. In the \ref{SectionNPCompleteProof} section, we show the NP-completeness of this task and reduce the problem to the maximum edge-weighted clique <span class="f1">problem.</span><span class="f2">problem (MEWC).</span> The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} ``Conclusion&quot;.
+
+\section{Dota Underlords game play description}
+\label{SectionDUDescription}
+
+During a game, eight players build a team of ``heroes&quot;-- creatures that can fight each other on a game map. Each of the heroes has basic parameters: health, damage, attack speed, and others, as well as a special ability that determines its role in the game. Each hero belongs to two or more ``alliances&quot;-- <span class="f2">the</span> sets that unite several heroes. For example, Enchantress hero belongs simultaneously to the alliance ``druids&quot; and to the alliance ``predators&quot;. When there are several heroes in the team who belong to the same alliance (for each alliance this number is individual), the player receives a bonus consisting of improving the characteristics of his heroes or worsening the <span class="f1">characteristics</span><span class="f2">parameters</span> of<span class="f1">his</span> enemy's heroes.
+
+<span class="f1">Also during the</span><span class="f2">In a</span> game, <span class="f1">you</span><span class="f2">a player</span> can strengthen<span class="f1">your</span> heroes by upgrading them to higher levels or by purchasing in-game items. <span class="f2">Moreover, during the game player can change the line-up of the team by spending in-game money in order to react on the actions of his opponents (which has the disadvantage that somewhat weaker heroes appear later in the game). Also, during a combat the position of heroes on a board matters.</span> In this work, we don't take into account these aspects. <span class="f1">Thus, a strength</span><span class="f2">The reason is that it is very hard to model all of the intricacy</span> of <span class="f2">the game due to involving many factors. Therefore the goal of our model is to analyse the core gameplay which defines the auto-battler genre -- the forming</span> a<span class="f1">players</span> team <span class="f1">is determined by:</span><span class="f2">of heroes in order to maximize a total strength.
+</span>
+<span class="f2">Thus, in our simplified model of the real game, the strength of a team is determined by two factors:</span>
+\begin{enumerate}
+    \item The power of selected heroes
+    \item Bonuses from the alliances which they are belong
+<span class="f6">@@ -103,7 +101,8 @@</span> Thus, a strength of a players team is determined by:
+
+\subsection{The simplest problem statement}
+
+We formalize the problem as follows. We assume that in total we have $n$ heroes to choose from. We assume that the strength (power) of some $i$-th hero is presented by some non-negative value $s_i$. As $x_i$ we denote the belonging of hero $i$ to the <span class="f2">forming</span> team. Let $ x_i = 1 $, if the $ i $ -th hero belongs to the<span class="f1">players</span> team and $ x_i = 0 $ otherwise.  <span class="f1">The condition</span><span class="f2">Condition</span> that there is no more than $m$ heroes in a team can be written as $ \sum_{i=1}^n x_i \leq m $. 
+<span class="f1">Then in</span><span class="f2">Thus,</span> the simplest <span class="f1">form this</span><span class="f2">way to formalize the</span> problem <span class="f1">can be expressed as follows:</span><span class="f2">is following:</span>
+
+\begin{equation}
+\begin{gathered}
+<span class="f6">@@ -114,26 +113,24 @@</span> We formalize the problem as follows. We assume that in total we have $n$ heroes
+\end{gathered}
+\end{equation}
+
+In this statement, the problem <span class="f1">is solved elementarily - the</span><span class="f2">has a trivial</span> solution is to take $ n $ elements with the largest weights.
+
+\subsection{Problem statement with alliances}
+As <span class="f1">mentioned, in``Dota</span><span class="f2">mentioned above, in ``Dota</span> Underlords&quot; <span class="f2">game</span> each hero belongs to two or more ``alliances&quot; --- in turn, each alliance includes several heroes. When <span class="f1">a</span><span class="f2">the</span> team has several heroes from the same alliance (for each alliance this number is individual), the player receives a bonus, which is expressed in strengthening all the heroes <span class="f1">from</span><span class="f2">of</span> the alliance, <span class="f2">or</span> strengthening all <span class="f1">his heroes,</span><span class="f2">heroes of the team,</span> or weakening all the heroes of the <span class="f1">opponent.</span><span class="f2">opponent team.</span> The last can be interpreted as a relative strengthening of <span class="f1">the player’s heroes, and therefore</span><span class="f2">own heroes. Therefore we consider</span> only the first two cases<span class="f1">will be considered</span> throughout the <span class="f1">work.</span><span class="f2">paper.</span> It should be noted that for one alliance, there can be several bonuses that are unlocked by the different numbers of heroes of the corresponding alliance. These bonuses can also be of various types.
+
+We propose to model <span class="f1">this</span><span class="f2">that</span> situation by introducing<span class="f1">a</span> 3-index tensor $ e_{ijk} \in \mathbb{R} $ which represents a bonus to<span class="f1">the</span> hero $i$ from<span class="f1">the</span> alliance $j$, in which there are at least $k$ heroes of the alliance $j$. In other words, $ e_{ijk} $ is the $k$-th bonus of<span class="f1">the</span> alliance $ j$ for<span class="f1">the</span> hero $i$.
+
+By using<span class="f1">the</span> tensor $e_{ijk} $, we support both types of <span class="f1">alliances -- those</span><span class="f2">alliances: the first</span> that gives bonuses to its members and <span class="f1">those</span><span class="f2">the second</span> that provides bonuses to all<span class="f1">the</span>  heroes of <span class="f1">a player.</span><span class="f2">the team.</span> Moreover, alliances of <span class="f1">the considered</span><span class="f2">both</span> types differ<span class="f1">only</span> in <span class="f2">only</span> one thing.  <span class="f1">For</span><span class="f2">The value of $e_{ijk} $ is zero for</span> alliances that give<span class="f1">a</span> bonus to their members,<span class="f1">the value of $e_{ijk} $ is zero</span> if and only if the $i$-th hero <span class="f1">does not</span><span class="f2">doesn't</span> belong to the $j$-th alliance. In the general case, <span class="f1">this</span><span class="f2">it</span> is not necessarily true. Note that<span class="f1">the</span> tensor $ e_{ijk} $ is sparse for<span class="f1">the</span> real instances of auto-chess games since <span class="f1">the</span><span class="f2">there are few</span> alliances <span class="f1">from which</span><span class="f2">that give</span> bonuses<span class="f1">go</span> to all the heroes <span class="f1">are few.</span><span class="f2">in the team.</span>
+
+We propose to control the <span class="f1">occurrence</span><span class="f2">presence</span> of the  bonus $ e_{ijk} $ in the total strength of the team by using control binary variable $ I_{ijk} $.
+So, we can write down the objective function as the following sum $ \sum_{i = 1}^{n} x_i s_i + \sum_{i=1}^{n} \sum_{j=1}^{t}  \sum_{k=1}^{q} e_{ijk} I_{ijk} $.
+<span class="f1">The connection between the variables $ x_{i} $ and $ I_{ijk} $ is given by the inequalities</span><span class="f2">Inequalities</span> $\forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} -  <span class="f1">k \ge</span><span class="f2">k\ge</span> M( I_{ijk} - <span class="f1">1)$.</span><span class="f2">1)$ connect variables $ x_{i} $ and $ I_{ijk} $</span> 
+
+These inequalities do not allow<span class="f1">the</span> binary variable $ I_{ijk} $ to take the value 1 if the solution includes less than $k$ heroes from the alliance $j$. When the solution contains less than $m$ heroes from the alliance $j$, the left side of this inequality is negative, so for the inequalities to be observed, the right side should be even smaller. It is possible only when the binary variable $ I_{ijk} $ is zero. In this case, the right-hand side is $-M $, where $M$ is a big constant known to be larger than $k$, that is, larger than the maximum size of the alliance $q$.
+
+We require that the bonus for the hero $i$ can be activated ($ I_{ijk} = 1 $) only if the hero $i$ belongs to the solution. This is given by the inequalities $ \forall {i, j, k}: I_{ijk} \le x_i $. We also want the bonus $ e_{ijk} $ to be activated only if the character $ i $ belongs to the alliance $j$. For this, we include in the model inequalities $ \forall{i, j, k} :\, I_{ijk} \le a_{ij} $.
+
+Thus, after introducing<span class="f1">the</span> alliances <span class="f1">into</span><span class="f2">for</span> the model, the system of equations can be written as the following:
+
+\begin{equation}
+\label{eq:DUIP}
+<span class="f6">@@ -163,143 +160,112 @@</span> a_{ij} \in \{0, 1\} \text{ -- indicates if hero } i \text{ belongs to the allian
+\end{gathered}
+\end{equation}
+
+\section{Proof of an NP-completeness of the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem}
+\label{SectionNPCompleteProof}
+
+To prove that a problem is NP-complete, it is necessary to show that it is<span class="f1">both an</span> NP-hard<span class="f1">problem</span>  and <span class="f1">that</span><span class="f2">at the same time</span> it belongs to the NP class. Let's us prove both statements.
+
+<span class="f1">\subsection{Polynomial-Time Reduction of</span><span class="f2">\subsection{Polynomial-time reduction from the</span> Maximum Density Sub-Graph Problem to the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem}
+
+<span class="f1">The</span><span class="f2">First of all, let us remind to reader that the</span> problem of finding a set of $k$ vertices with the most edges in the subgraph induced by this set is called the maximum dense subgraph of $k$ vertices problem \cite{kortsarz1993choosing}.  Obviously this problem is NP-hard by reduction from clique. 
+
+%should be formulated before Theorem 1. Please, give a reference, where NP-hardness of this problem has been proved
+
+\begin{theorem}
+\label{MEWC_DU}
+The problem of finding the maximum dense subgraph of $k$ vertices reduces to the <span class="f1">Underlords</span><span class="f2">DU</span> problem.
+\end{theorem}
+\begin{proof}
+
+<span class="f1">Consider</span><span class="f2">%Let consider</span> its special <span class="f1">case --- let</span><span class="f2">case:</span> all the alliances have a size equal to two, and the power of all the heroes is the same.
+<span class="f1">Consider</span><span class="f2">Let consider</span> a special case of the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem with the following restrictions:
+
+\begin{enumerate}
+    \item The <span class="f1">power</span><span class="f2">powers</span> of all heroes <span class="f1">is</span><span class="f2">are</span> the same ($\forall i, j \; s_i=s_j$)
+    \item Alliances can <span class="f1">give</span><span class="f2">provide</span> bonuses only to the heroes that belong to the corresponding alliance. ($\forall i, j, k \; a_{ij}=0 \Longrightarrow e_{ijk} = 0$)
+    \item All alliances have the same size <span class="f1">equaling</span><span class="f2">equalling</span> two ($\forall j \; \sum_i a_{ij}=2 $)
+    \item All alliances give<span class="f1">a</span> bonus if and only if both heroes<span class="f1">are</span> present in the team ($\forall i, j \; e_{ij1}=0$)
+    \item Bonuses from all alliances are the same ($\forall i, j, i', j' \; a_{ij}=1,\, a_{i' j'}=1 \Longrightarrow e_{ij2}=e_{i' j' 2}$)
+\end{enumerate}
+
+Then the data can be represented <span class="f1">in the form of</span><span class="f2">as</span> a graph $G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the <span class="f1">active</span><span class="f2">activated</span> alliances. You may notice that in this <span class="f1">case,</span><span class="f2">case</span> the optimal team of size $ k $ corresponds to the densest subgraph $ G' \subset G $ with $ k $ vertices.  <span class="f1">Density in</span><span class="f2">In</span> this formulation <span class="f2">density</span> can be understood as the value $ \frac{|G'(E)|}{|G'(V)|} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of <span class="f1">active</span><span class="f2">activated</span> alliances, which corresponds to $ G'(E)$. Since $ k $ is <span class="f1">invariable,</span><span class="f2">a constant, the total strength of the team grows</span> with the increasing density of the graph $ G '$ <span class="f1">the total strength of the team grows.</span><span class="f2">.</span>
+
+<span class="f1">It</span><span class="f2">%It</span> was shown in \cite{downey1995fixed} that the problem of fining subgraph with a fixed size and maximum density is NP-complete. 
+<span class="f1">We</span><span class="f2">Thus, we</span> have shown that <span class="f1">it</span><span class="f2">finding the maximum dense subgraph of $k$ vertices</span> is a special case of the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem, so it is reducible to <span class="f1">Dota Underlords.</span><span class="f2">DU problem.</span> Therefore the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem is no less difficult than <span class="f1">the well-known NP-complete</span><span class="f2">NP hard</span>  problem. Thus the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem is <span class="f1">NP-hard.</span><span class="f2">NP-hard as well.</span>
+
+\end{proof}
+
+\subsection{Dota Underlords belongs to NP-class}
+<span class="f1">The decision</span><span class="f2">Decision</span> version of <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem (problem with<span class="f1">the</span> answer ``yes&quot; or ``no&quot;) can be formulated as follows: ``\textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}&quot;. Then, we are ready to state the following theorem.
+\begin{theorem}
+\label{DU_is_NP}
+The decision version of <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem belongs to the  NP class.
+\end{theorem}
+\begin{proof}
+
+By<span class="f1">the</span> definition of the NP-class, the problem belongs to the NP class, when <span class="f1">the presented</span><span class="f2">a reported</span> solution can be checked in polynomial time. In our case,<span class="f1">the</span> solution is a set of $m$ heroes. To verify the solution, we need to calculate the total power of the team. 
+
+So, we just need to calculate the objective function. In turn, to do that, at first we need to find out what alliances are formed. This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$. It is can be done for $O(nt)$ operations. 
+
+After that, the objective function can be calculated in a straightforward way by $O(ntq)$ number of operations. Thus, we need can check the solution for the polynomial time on the input size. 
+\end{proof}
+
+\subsection{NP-completeness of <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem}
+\begin{theorem}
+	The <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem defined by the system of inequalities \eqref{eq:DUIP}  belongs to the class of NP-complete problems.
+\end{theorem}
+
+\begin{proof}
+Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an <span class="f1">NP-complete</span><span class="f2">NP-hard</span> problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem is <span class="f1">NP-complete.</span><span class="f2">NP-complete \blacksquare</span>
+\end{proof}
+
+<span class="f1">\subsection{Polynomial-Time</span><span class="f2">\section{Polynomial-Time</span> Reduction <span class="f1">of</span><span class="f2">from</span> the <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem to the <span class="f1">maximum edge-weighted clique problem}</span><span class="f2">MEWC}</span>
+While working on the paper, we <span class="f1">also</span><span class="f2">additionally</span> found a polynomial-time reduction of <span class="f1">the Dota Underlords</span><span class="f2">DU</span> problem to<span class="f1">the</span> well-known problem --- Maximum Edge-Weighted Clique (MEWC).  <span class="f1">Thus, when solving individual instances of the Dota Underlords problem,</span><span class="f2">Thus</span> anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or efficient quadratic formulations from <span class="f1">\cite{hosseinian2017maximum}.</span><span class="f2">\cite{hosseinian2017maximum} for solving instances of the DU problem,</span> 
+
+In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$.<span class="f1">The reduction will be proposed through the series of theorems, where each theorem describes the reduction from a less and less simplified version of DU to the maximum edge-weighted clique problem.</span>
+
+<span class="f1">\begin{theorem}</span>
+<span class="f1">\label{trivial_case}</span>
+<span class="f1">    The Dota Underlords problem without alliances is reduced to the  maximum edge-weighted clique problem.</span>
+<span class="f1">\end{theorem}</span>
+<span class="f1">\begin{proof}</span>
+<span class="f1">    </span>
+<span class="f1">   We construct a graph $G$ with weighted edges such that the solution of the problem DU (Dota Underlords) follows from the solution of the problem MEWC (Maximum Edge-Weighted Clique). Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem.</span>
+<span class="f1">    We construct the set $V^1 $ of $n$ vertices corresponding to the set of heroes in the DU problem. To each vertex we assign one of the heroes from the DU problem -- or, in other words, we name each vertex in honor of one of the heroes of the DU problem. We enumerate these vertices according to the order of the heroes $v_1^1$, $v_2^1$, ..., $ v_n^1$</span>
+<span class="f1">    We additionally construct $m-1$ sets of vertices $ V^2 $, $ V^3 $, and so on up to $ V^m $, in each we also name one vertex in honor of one of the heroes of the DU problem. Similarly to the first set, we enumerate the vertices in the set $V^i $ as $ v_1^i $, $v_2^i$, ..., $v_n^i$.</span>
+<span class="f1">    Denote the family of these sets as $ \mathcal{F} $. Thus, we get $m$ sets of $n$ vertices, where each set has one vertex corresponding to one of the heroes.</span>
+<span class="f1">   We build edges in the graph as follows --  between the vertices $v_a^i $ and $v_{a'}^{i'} $ an edge is drawn if both of the following conditions are true:</span>
+<span class="f1">    \begin{itemize}</span>
+<span class="f1">        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ correspond to different heroes ($a \neq a'$)</span>
+<span class="f1">        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ lie in different sets from the family $\mathcal{F}$ ($ i \neq i /'$)</span>
+<span class="f1">    \end{itemize}</span>
+
+<span class="f1">    Consider all the maximum clique in this graph. Obviously, in any such clique, there is exactly one vertex from each set $ V^i $ -- total $m$ vertices. Also, all these vertexes correspond to different heroes. Thus, each clique sets a team of heroes in the DU task. It should be noted that each team can correspond to several cliques.</span>
+<span class="f1">  </span>
+<span class="f1">    Now we introduce the heroes’ power. For this, we assign the weight $ \frac{s_a}{m-1} + \frac{s_{a '}}{m-1}$ to the edge connecting the vertices $s_a^i$ and $s_ {a'}^{i'}$. We show that the sum of the weights of the edges in a click corresponding to a certain team is exactly the strength of this team.</span>
+<span class="f1">    Indeed, in a clique for each of its vertices, there is exactly $m-1$ edge incident to it. Then each term $\frac{s_i}{m-1}$ corresponding to a vertex with a subscript $i$ is included in the sum exactly $m-1$ times. It follows that the sum of all the weights of the edges in a clique is the sum of all the values $s_i$ corresponding to the numbers of the vertices that form this clique.      </span>
+<span class="f1">\end{proof}</span> 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[height=4in,width=3in,angle=0]{figure1.pdf}
+\caption{An example of graph $G'$ from <span class="f2">the</span> theorem <span class="f1">\ref{second_case}.</span><span class="f2">\ref{general_case}  for the case $n=4$, $m=3$, $q=2$.</span>  Graph $G'$ consists of the sets $\mathcal{F}$ and <span class="f1">$\mathcal{F}_2$ for the case $n=4$, $m=3$, $q=2$.</span><span class="f2">$\mathcal{F}_2$.</span> The edges between every vertex of sets $\mathcal{F}$ and $\mathcal{F}_2$ are avoided for picture simplicity. The size of the maximal clique is 6. }
+<span class="f2">%в подписи к рисунку надо ещё вставить упоминание о графе G</span>
+\label{fig:reduction}
+\end{center}
+\end{figure}
+
+<span class="f1">\begin{theorem}</span>
+<span class="f1">\label{second_case}</span>
+<span class="f1">    The Dota Underlords problem with alliances of the size 2 is reduced to the maximum edge-weighted clique.</span>
+<span class="f1">\end{theorem}</span>
+
+<span class="f1">\begin{proof}</span>
+<span class="f1">We construct a graph $G'$ with weighted edges in such a way that the solution of the problem DU follows from the solution of the MEWC problem. Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem. We take a graph $G$ from the theorem \ref{trivial_case} as a base. We construct a set $ W^{1,2} $ with $ \binom{n}{2} $ vertices, where each vertex corresponds to an unordered pair of heroes. We enumerate these vertices in lexicographic order, respectively, by the order of the pairs $ w_{1,2}^1 $, $w_{1,3}^1 $,..., $w_{n-1, n}^1$. </span>
+
+<span class="f1">    We additionally construct $\binom{m}{2}-1$ vertex sets $W^{1,3} $, $W^{1,4} $ and so on up to $W^{m-1, m}$. In every of these set we also assign each vertex to an unordered pair of heroes from the DU problem. Similarly to the first set, we enumerate the vertices in the set $W^{i, j} $ as $ w_1^{i, j} $, $ w_2^{i,j} $, ..., $ w_{n-1, n }^{i, j} $.   </span>
+<span class="f1">   We denote the family of these sets by $\mathcal{F}_2 $. Thus, we get $ \binom {m}{2} $ sets of $ \binom{n}{2}$ vertices, at the same time, vertexes at every set correspond to all possible pair of heroes.    </span>
+<span class="f1">    In the graph we draw additional edges between the vertices $ w_{a, b}^{i, j} $ and $w_{a',b'}^{i',j'} $ an edge is drawn if following conditions are satisfied:</span>
+<span class="f1">    \begin{itemize}</span>
+<span class="f1">        \item The vertices $ w_{a, b}^{i, j} $ and $w_ {a', b'}^{i',j'} $ correspond to different pairs of heroes ($ a \neq a '\lor b \neq b'$)</span>
+<span class="f1">        \item The vertices $ w_ {a,b}^{i, j} $ and $w_{a', b'} ^{i', j'} $ lie in different sets from the family $ F_2 $ ($ i \neq i '\lor j \neq j' $)</span>
+<span class="f1">    \end{itemize}</span>
+<span class="f1">    </span>
+<span class="f1">    We also build all edges between all the vertices from the sets $ \mathcal {F} $ and $ \mathcal {F}_2 $. We assign a weight of 0 to all these new edges. Evidently, any maximal clique contains one vertex from each of the sets $V$ and $W$ of the families $ \mathcal {F} $ and $ \mathcal{F}_2 $. \\</span>
+<span class="f1">    Assign to each edge  $ (v_a^k, w_{a,b}^{i, j}) $ or $ (v_b^k, w_{a,b}^{i,j}) $ some big constant weight $N$. These edges connect a vertex from the family $\mathcal{F}$ corresponding to a certain hero with a vertex from the family $ F_2 $ corresponding to a pair of heroes where this hero belongs. See the figure \ref{fig:reduction} for example of graph $G'$.</span>
+<span class="f1">    </span>
+
+<span class="f1">    </span>
+<span class="f1">    Now we are going to show that any maximal clique in graph $G'$ containing a set of vertices from the family $\mathcal{F}$ corresponding to some set of heroes also contains the set of vertices from the family $\mathcal {F}_2$ corresponding to all pairs of said heroes from this team. In this clique, the edges connecting the vertices from the families $\mathcal{F}$ and $ \mathcal {F}_2$ make a total contribution to the weight equals to $2 \binom{n}{2} N$, because maximum clique includes exactly $2 \binom {n} {2}$ edges with additional big weight $N$ -- two incident to each vertex from $\mathcal {F}_2$.</span>
+<span class="f1">    </span>
+<span class="f1">    	It is easy to see that if a vertex in a clique belongs to the family $\mathcal{F}_2 $ and does not correspond to a pair of associated vertices of $ \mathcal {F} $ that are in the clique, then the clique will contain at least one edge that has an additional big constant weight $N$ less. Thus, the click will not have the maximum weight. Thus, the statement is proved.</span>
+<span class="f1">    	</span>
+<span class="f1">    	 Note that adding weights on the edges that are small compared to $ N $ preserves the truth of the statement. Since $ N $ is chosen arbitrarily, we can assume that all values of power and bonuses are small compared to $ N $. Therefore we add bonuses that an alliance of a pair of heroes with numbers $ a $ and $ b $ gives the hero with number $ c $ to the weights of the edges  $ (v_c^{k}, w_{a, b}^{i, j}) $ connecting the vertices from the sets $\mathcal {F}$ and $\mathcal {F}_2$. If the selected team has the heroes $a$, $b$, and $c$, then this bonus will be included in the weight of the clique. Since the same number of edges with an additional weight $ N$ are included in all the cliques under consideration, the maximum clique will be the one where the sum of the heroes' strengths (the sum of the edges’ weights between the vertices of the $\mathcal {F} $ family) and bonuses (the edges’ weights between the vertices of the families $\mathcal{F}$ and $\mathcal {F}_2$ without taking into account the constants $N$) is the maximum. Thus, the weight of the clique corresponds to the total bonus from the team, from which point the reduction is clear.
+    </span>
+<span class="f1">\end{proof}</span>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Теорема для случая альянса размером k
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}
+\label{general_case}
+    <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem with alliances of size $q$, <span class="f1">reduces</span><span class="f2">has a polynomial reduction</span> to the <span class="f1">maximum edge-weighted clique.</span><span class="f2">MEWC.</span>
+\end{theorem}
+<span class="f2">%</span>	The proof will be constructed similarly to the proof of the theorem \ref {second_case}.
+<span class="f1">We</span><span class="f2">%We</span> will create additional vertices associated with all possible combinations of $q$ heroes. The bonuses from the formation of the corresponding alliances will be the same as in the theorem \ref {second_case} is on the edges.<span class="f1">The main difference will be that for the vertices we will use $q$ indices instead of two indices. The formal considerations are given below.</span>
+
+\begin{proof}
+<span class="f2">%--------------------------------------------</span>
+<span class="f2">	At first, as a base we build a graph $G$ with weighted edges.</span>
+<span class="f2">%We construct a graph $G$  such that the solution of the problem DU (Dota Underlords) follows from the solution of the problem MEWC. Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem.</span>
+<span class="f2">    We construct a set $V^1 $ of $n$ vertices corresponding to a set of heroes of the DU problem. To each vertex we assign one of the heroes. In other words, we name each vertex in honour of one of the heroes of the DU problem. We enumerate these vertices according to the order of the heroes $v_1^1$, $v_2^1$, ..., $ v_n^1$.</span>
+<span class="f2">    We additionally construct $m-1$ sets of vertices $ V^2 $, $ V^3 $, and so on up to $ V^m $, In each set we also name every vertex in honour of a hero of  DU problem. Similarly to the first set, we enumerate the vertices in a set $V^i $ as $ v_1^i $, $v_2^i$, ..., $v_n^i$.</span>
+<span class="f2">    Wet denote a family of these sets as $ \mathcal{F} $. Thus, we get $m$ sets of $n$ vertices, where each set has one vertex corresponding to one of the heroes.</span>
+<span class="f2">   We build edges in the graph $G$ as follows --  an edge is drawn between the vertices $v_a^i $ and $v_{a'}^{i'} $  if both of the following conditions are true:</span>
+<span class="f2">    \begin{itemize}</span>
+<span class="f2">        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ correspond to distinct heroes ($a \neq a'$)</span>
+<span class="f2">        \item The vertices $v_a^i $ and $v_{a'}^{i'} $ lie in different sets from the family $\mathcal{F}$ ($ i \neq i /'$)</span>
+<span class="f2">    \end{itemize}</span>
+
+<span class="f2">    Consider all maximum cliques in the graph $G$. Obviously, in any clique of size $m$, there is exactly one vertex from each set $ V^i $. At the same time all vertexes of clique correspond to distinct heroes. Thus, each clique corresponds to a team of $m$ heroes of the DU task. Note that each team can correspond to several cliques.</span>
+<span class="f2">  </span>
+<span class="f2">    To introduce heroes strengths (power), we assign a weight $ \frac{s_a}{m-1} + \frac{s_{a '}}{m-1}$ to an edge between the vertices $s_a^i$ and $s_ {a'}^{i'}$. </span>
+<span class="f2">    Let us show that the sum of the edges weights in a click corresponding to a certain team is exactly the total strength of the team. Indeed, for each vertices of the clique, there are exactly $m-1$ incident edges. Then, each term $\frac{s_i}{m-1}$ corresponding to a vertex with a subscript $i$ is included in the total sum exactly $m-1$ times. It follows that the sum of all the weights of the clique edges is the sum of all the values $s_i$ corresponding to the numbers of the vertices that form this clique.      </span>
+<span class="f2">%------------</span>
+    
+<span class="f1">We</span><span class="f2">Secondly, we</span> construct a graph $G'$ with weighted edges in such a way that the solution of the problem DU follows from the solution of the MEWC problem. Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem.
+
+    We<span class="f1">take a graph $G$ from the theorem \ref{trivial_case} as the base. We</span> construct a set $W^{1,q} $ with $\binom{n}{q} $ vertices, where each vertex corresponds to an unordered set of $q$ heroes. We enumerate these vertices in the lexicographic order corresponding to the order of  combinations of $ \binom {n}{q} $ elements of $ w^1_ {\underbrace {1,2, ..., q}_\text{total $ q $ indices }}, w^1_{\underbrace {1,2, ..., q + 1}_\text {total $ q $ indices}}, ..., w^1_ {\underbrace{n-q+1, ..., n-1, n}_\text{total $ q $ indices}} $. It is important that each of these elements has exactly $q$ indices.
+
+We additionally construct $ \binom{m}{q}-1 $ vertex sets $ W^{1,2, ..., q} $, $W^{1,2, q + 1} $ and so on up to $ W^{n-q + 1, ..., n-1, n} $. In every of these sets we also assign each vertex to an unordered set of $q$ heroes of the DU problem according to $\binom{n}{q}$ possible combinations. Similarly to the first set, we enumerate the vertices in the set $V^{\overbrace {i, j, k, l, ...}^\text {total $ q $ indices}} $ as $w_{\underbrace {1,2, ..., q}_\text {total $ q $ indices}}^{\overbrace{i, j, k, l, ...}^\text{total $ q $ indices}} $, $w_{ \underbrace {1,2, ..., q + 1}_\text{total $ q $ indices}}^{\overbrace{i, j, k, l, ...} ^\text{total $ q $ indices}} $,  ..., $w_{\underbrace {n-q + 1, ..., n-1, n}_\text{total $ q $ indices}}^{\overbrace { i, j, k, l, ...}^\text {total $ q $ indices}} $.
+    We denote the family of these sets as $ \mathcal {F} _q $. Thus, we get $ \binom{m}{q} $ sets with $ \binom{n}{q} $.
+<span class="f6">@@ -309,22 +275,21 @@</span> We additionally construct $ \binom{m}{q}-1 $ vertex sets $ W^{1,2, ..., q} $, $W
+        \item The vertices $ w_{a, b, c, ...}^ {i, j, k ...} $ and $ w_{a', b', c',...}^{i', j', k', ...} $ belong to different sets from the family $ F_q $ ($ i \ neq i'\lor j \ neq j' \lor k \neq k', ... $)
+    \end {itemize}
+    
+    We also build all <span class="f1">the</span><span class="f2">possible</span> edges between every vertices of the sets $ F $ and $ F_q $. We assign a weight of 0 to all those edges. Indeed, any maximal clique contains one vertex from each of the sets $ V $ and $ W $ of the families $\mathcal {F}$ and $\mathcal {F}_q$. We assign to each edge with a shape $ (v_a^k, w_ {a, b, c, ...}^ {i, j, k, ...}) $ or $ (v_b^k, w_{a, b, c , ...}^{i, j, k, ...}) $ some big constant weight $ N $. Thus, every edge connect a vertex from the family $ \mathcal{F} $ corresponding to some hero with a vertex from the family $ F_q $ corresponding to the set of $ q $ heroes (a hero forms alliance with set of $q$ heroes).<span class="f1">Now we are going to show that any maximal clique $\mathcal{C}$ in graph $G'$ has a set of vertices from the family $\mathcal{F}$ corresponding to a certain set of heroes, and at the same time $\mathcal{C}$ contains a set of vertices from the family $ \mathcal{F}_q $ corresponding to all combinations of $q$ heroes. In the clique $\mathcal{C}$, the edges connecting the vertices from the families $ \mathcal{F} $ and $ \mathcal{F}_q $ make a total contribution to the weight of $\mathcal{C}$ and this contribution equals to $ q \binom{n}{q} N $. It is because the clique includes exactly $ q \binom{n}{q} $ edges with an additional big constant weight $N$ --- q incident to each vertex from $ \mathcal {F}_q $.  It is not hard to see that when a vertex in a clique belongs to the family $ \mathcal{F}_q $, and does not belong to a set of $q$ vertices from $ \mathcal {F} $, then the clique $\mathcal{C}$ contains at least one edge less with an additional big constant weight $ N $ among the edges of the clique. Thus, the clique $\mathcal{C}$ does not have the maximum weight. Thus, the statement is proved.</span> 
+    
+     <span class="f1">Note that adding weights on the edges that</span><span class="f2">Now we</span> are <span class="f1">small compared</span><span class="f2">going</span> to <span class="f1">$N$ preserves the truth of the statement. Since $N$ is chosen arbitrarily, we can assume</span><span class="f2">show</span> that <span class="f1">all</span><span class="f2">any maximal clique $\mathcal{C}$ in graph $G'$ has a set of vertices from</span> the <span class="f1">values</span><span class="f2">family $\mathcal{F}$ corresponding to a certain set</span> of <span class="f1">heroes’ power</span><span class="f2">heroes,</span> and <span class="f1">bonuses are small compared to $N$.</span>
+<span class="f1">	Therefore we add bonuses to</span><span class="f2">at</span> the <span class="f1">weights</span><span class="f2">same time $\mathcal{C}$ contains a set</span> of <span class="f2">vertices from</span> the <span class="f1">edges of shape</span><span class="f2">family</span> $ <span class="f1">(v_x^{y}, w_{a, b, c, ...} ^ {i, j, k, ...})</span><span class="f2">\mathcal{F}_q</span> $ <span class="f2">corresponding to all combinations of $q$ heroes. In the clique $\mathcal{C}$, the edges</span> connecting the vertices from <span class="f2">the</span> families <span class="f1">of $\mathcal{F}</span><span class="f2">$ \mathcal{F}</span> $ and $ \mathcal{F}_q <span class="f1">$. If the team has the heroes $a$, $b$, $c$, ... and hero $x$, then this bonus will be included in</span><span class="f2">$ make a total contribution to</span> the weight of <span class="f2">$\mathcal{C}$, and this contribution equals to $ q \binom{n}{q} N $. It is because</span> the <span class="f1">maximum edge-weighted clique. Since all the cliques under consideration have the same number of</span><span class="f2">clique includes exactly $ q \binom{n}{q} $</span> edges with<span class="f1">an</span> additional <span class="f2">big constant</span> weight <span class="f1">$N$, the maximum clique will be the one where the maximum</span><span class="f2">$N$ --- $q$ incident to each vertex from $ \mathcal {F}_q $.  It</span> is <span class="f2">not hard to see that when a vertex in a clique belongs to</span> the <span class="f1">sum of the heroes' powers (the sum of the weights</span><span class="f2">family $ \mathcal{F}_q $, and does not belong to a set</span> of <span class="f1">the edges between the</span><span class="f2">$q$</span> vertices <span class="f1">of</span><span class="f2">from $ \mathcal {F} $, then</span> the <span class="f2">clique $\mathcal{C}$ contains at least one edge less with an additional big constant weight</span> $ <span class="f1">\mathcal{F}</span><span class="f2">N</span> $ <span class="f1">family) and bonuses (the weights of</span><span class="f2">among</span> the edges<span class="f1">between the vertices</span> of the <span class="f1">families $ \mathcal{F} $ and $ \mathcal {F}_q $ without taking into account</span><span class="f2">clique. Thus,</span> the <span class="f1">constants $ N $).</span><span class="f2">clique $\mathcal{C}$ doesn't have the maximum weight. Thus, the statement is proved.</span> 
+    
+    <span class="f1">Thus,</span><span class="f2">Note that adding weights on</span> the <span class="f1">weight</span><span class="f2">edges that are small compared to $N$ preserves the truth</span> of the <span class="f1">clique corresponds</span><span class="f2">statement. Since $N$ is chosen arbitrarily, we can assume that all the values of heroes powers and bonuses are small compared to $N$.</span>
+<span class="f2">	Therefore we add bonuses</span> to the <span class="f1">total bonus from</span><span class="f2">weights of</span> the <span class="f1">team,</span><span class="f2">edges with shape $ (v_x^{y}, w_{a, b, c, ...} ^ {i, j, k, ...}) $ connecting the vertices</span> from <span class="f2">the families of $\mathcal{F} $ and $ \mathcal{F}_q $. If the team has the heroes $a$, $b$, $c$, ... and hero $x$, then this bonus will be included in the weight of the MEWC. Since all the cliques under consideration have the same number of edges with an additional weight $N$, the maximum clique will be the one</span> where the <span class="f1">polynomial-time reduction</span><span class="f2">maximum</span> is <span class="f1">clear.</span><span class="f2">the sum of the heroes' powers (the sum of the weights of the edges between the vertices of the $ \mathcal{F} $ family) and bonuses (the weights of the edges between the vertices of the families $ \mathcal{F} $ and $ \mathcal {F}_q $ without taking into account the constants $ N $).</span>
+    
+<span class="f2">Thus, the weight of the clique corresponds to the total bonus from the team, from where the polynomial-time reduction is clear    \blacksquare .</span>
+\end{proof}
+
+%\section{Практическое применение для реальной задачи Dota Underlords}
+\section{Model application for real data}
+\label{SectionComputationalResults}
+  
+We <span class="f1">apply this</span><span class="f2">have applied the prosed</span> model to analyze the real <span class="f1">Dota Underlords</span><span class="f2">DU</span> problem. Note that our result should not be considered as <span class="f1">some</span><span class="f2">an</span> objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes’ power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when various conditions satisfied, and in addition, the ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers&quot;, arranged so that the characters inside the tier are approximately equal in strength.
+
+Within the simplified model, we accept the following:
+\begin{enumerate}
+<span class="f6">@@ -334,7 +299,7 @@</span> Within the simplified model, we accept the following:
+\end{enumerate}
+
+Information about the strength of the heroes and the structure of alliances is given in the table \ref{table:aliances}. 
+A complete table<span class="f1">defining a matrix</span>  of bonuses from the alliances $e_{ijk} $ can be found in our <span class="f2">public</span> \href{https://github.com/aponom84/UnderLords/blob/master/UnderLordsData.xlsx}{repository} \cite{UnderLordsInput}.
+
+\begin{table}
+\center
+<span class="f6">@@ -443,11 +408,15 @@</span> witch doctor  &amp;  heartless 2 +0.2  &amp;  human 2 +0.2  &amp;  insect 2 +0.2  &amp;  scaled
+
+\section{Conclusion}
+\label{SectionConclusion}
+<span class="f2">%I believe that the conclusions section should re-written by omitting the hopes of the authors, discussions of their contribution to the theory of NP-completeness and etc. They should focus on description of their results and perspectives of the research</span>
+
+
+
+In this paper, we demonstrated how a key to winning in a video game can lie in using linear integer  programming model. <span class="f1">The initial</span><span class="f2">We have described gameplay of the Dota Underlords, and have proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay. We have proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC. Also we have made assumptions about heroes strengths, and values of alliance bonuses. Based on this</span> data <span class="f2">we have found the exact solution of the proposed model with using IP-solver. </span>
+
+<span class="f2">The values of heroes  strengths, alliance bonuses,</span> and  the results of <span class="f1">solving</span><span class="f2">solved</span> the <span class="f1">model</span><span class="f2">IP-model</span> in the form of a Jupyter-notebook can be found in our <span class="f1">open</span><span class="f2">pubic</span> repository \cite{UnderLordsInput}.
+
+<span class="f1">We hope that this article will help to attract the attention of young minds to integer programming, discrete optimization methods,</span><span class="f2">%...</span> and <span class="f1">also to the millennium problem P $ \neq? $ NP.</span>
+<span class="f1">It is important that the mathematical formulation of the problem given by the set</span><span class="f2">perspectives</span> of<span class="f1">inequalities \eqref{eq:DUIP} can be considered by itself, abstracting from the domain. And in this paper, it is shown that the seemingly NP-hard task, in</span> the <span class="f1">``yes&quot; or ``no&quot; version, is NP-complete.</span>
+<span class="f1">Thus, this work contributes to the study of NP-complete problems.</span><span class="f2">research</span>
+
+\section{Acknowledgements}
+
+</pre>
+</body>
+</html>
