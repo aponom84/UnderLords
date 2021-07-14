@@ -31,36 +31,34 @@
 \title{Dota Underlords game is NP-Complete}
 
 
-\author{
-  Dmitry V. ~Sirotkin, Alexander A. ~Ponomarenko  \\
-  Laboratory of Algorithms and Technologies for Network Analysis\\
-  National Research University Higher School of Economics \\
-  136 Rodionova street, Nizhny Novgorod, Russia\\
-  \texttt{dsirotkin@hse.ru, aponomarenko@hse.ru} \\
-  %% examples of more authors
-  %% \AND
-  %% Coauthor \\
-  %% Affiliation \\
-  %% Address \\
-  %% \texttt{email} \\
-  %% \And
-  %% Coauthor \\
-  %% Affiliation \\
-  %% Address \\
-  %% \texttt{email} \\
-  %% \And
-  %% Coauthor \\
-  %% Affiliation \\
-  %% Address \\
-  %% \texttt{email} \\
+\author{Dmitry V. ~Sirotkin \and \\
+Alexander A. ~Ponomarenko} 
+
+
+\institute{Dmitry V. ~Sirotkin \at
+National Research University Higher School of Economic\\
+International Laboratory of Statistical and Computational Genomics\\
+34 Tallinskaya ul., Room 707, Moscow, Russia\\
+Tel.: +7(495) 772-95-90, ext.15060\\
+\email{dsirotkin@hse.ru} \\
+\and
+Alexander A. Ponomarenko \at
+National Research University Higher School of Economics \\
+Laboratory of Algorithms and Technologies for Network Analysis\\
+136 Rodionova street, Nizhny Novgorod, Russia \\
+Tel.:  +7 (831) 436-13-97\\
+\email{aponomarenko@hse.ru}\\
+\emph{Corresponding Author}
 }
+
+\date{Received: date / Accepted: date}
+
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 In this paper, we demonstrate how the optimal team choice problem in the popular computer game Dota Underlords can be reduced to the linear integer programming problem. We propose a model and solve it for real data. We also prove that this problem is NP-hard and show that it can be polynomially reduced to the maximum edge-weighted clique problem.
-
 \end{abstract}
 
 
@@ -68,25 +66,18 @@ In this paper, we demonstrate how the optimal team choice problem in the popular
 %\keywords{Целочисленное программирование \and NP-трудность \and NP-полнота}
 \keywords{NP-completeness \and Linear Integer Programming \and Computational Complexity \and Video Game \and Optimisation \and Polynomial-Time Reduction \and Maximum Edge-Weighted Clique}
 
-
-
 \section{Introduction}
 People love to play games. Many games and puzzles that people play are interesting due to their complexity: you need to be smart enough to solve it. In many cases, such complexity can be expressed as computation complexity depending on the input size. For example, it was shown that the puzzle ``Sokoban" is polynomially solvable \cite{hearn2005pspace}; in \cite{fraenkel1981computing} authors proved that the chess game belongs to the EXPTIME complexity class. 
 In turn, NP-complete computational class has a special place in theoretical computer science.
-In \cite{breukelaar2004tetris} was proved that the optimally playing offline version of legendary video game ``Tetris" is NP-complete. As well, it was found in \cite{kaye2000minesweeper} that ``Minesweeper" belongs to NP-complete class. Decision version of the problem of finding a minimal number of chip movements in a generalized version of 15-puzzle for the board with size $N \times N$ belongs is NP-complete also \cite{ratner1986finding}.
-
-In some sense, every NP-complete problem is a puzzle, and vice-verse, many puzzles are NP-complete. We refer reader to the surveys \cite{costa2018computational}, \cite{kendall2008survey} for deeper study computational complexity of puzzles and games.
-
-In this paper, we consider the popular video game Dota Unlderlords. It is one of the so-called auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which decision version  belongs to the class NP-complete.
-
+In \cite{breukelaar2004tetris} was proved that the optimally playing offline version of legendary video game ``Tetris" is NP-complete. As well, it was found in \cite{kaye2000minesweeper} that ``Minesweeper" belongs to NP-complete class. Decision version of the problem of finding a minimal number of chip movements in a generalized version of 15-puzzle for the board with size $N \times N$ belongs is NP-complete also \cite{ratner1986finding}.\\
+In some sense, every NP-complete problem is a puzzle, and vice-verse, many puzzles are NP-complete. We refer reader to the surveys \cite{costa2018computational}, \cite{kendall2008survey} for deeper study computational complexity of puzzles and games.\\
+In this paper, we consider the popular video game Dota Unlderlords. It is one of the so-called auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which decision version  belongs to the class NP-complete.\\
 The article is organized as follows. In section \ref{SectionDUDescription} Dota Underlords gameplay is described.
 We present a formulation of the Dota Underlords problem (DU problem) as the linear integer programming model in section \ref{SectionDUIP}. In the \ref{SectionNPCompleteProof} section, we show the NP-completeness of this task and reduce the problem to the maximum edge-weighted clique problem (MEWC). The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in the section \ref{SectionConclusion} ``Conclusion".
 
 \section{Dota Underlords game play description}
 \label{SectionDUDescription}
-
-During a game, eight players build a team of ``heroes"-- creatures that can fight each other on a game map. Each of the heroes has basic parameters: health, damage, attack speed, and others, as well as a special ability that determines its role in the game. Each hero belongs to two or more ``alliances"-- the sets that unite several heroes. For example, Enchantress hero belongs simultaneously to the alliance ``druids" and to the alliance ``predators". When there are several heroes in the team who belong to the same alliance (for each alliance this number is individual), the player receives a bonus consisting of improving the characteristics of his heroes or worsening the parameters of enemy's heroes.
-
+During a game, eight players build a team of ``heroes"-- creatures that can fight each other on a game map. Each of the heroes has basic parameters: health, damage, attack speed, and others, as well as a special ability that determines its role in the game. Each hero belongs to two or more ``alliances"-- the sets that unite several heroes. For example, Enchantress hero belongs simultaneously to the alliance ``druids" and to the alliance ``predators". When there are several heroes in the team who belong to the same alliance (for each alliance this number is individual), the player receives a bonus consisting of improving the characteristics of his heroes or worsening the parameters of enemy's heroes.\\
 In a game, a player can strengthen heroes by upgrading them to higher levels or by purchasing in-game items. Moreover, during the game player can change the line-up of the team by spending in-game money in order to react on the actions of his opponents (which has the disadvantage that somewhat weaker heroes appear later in the game). Also, during a combat the position of heroes on a board matters. In this work, we don't take into account these aspects. The reason is that it is very hard to model all of the intricacy of the game due to involving many factors. Therefore the goal of our model is to analyse the core gameplay which defines the auto-battler genre -- the forming a team of heroes in order to maximize a total strength.
 
 Thus, in our simplified model of the real game, the strength of a team is determined by two factors:
@@ -114,24 +105,16 @@ Thus, the simplest way to formalize the problem is following:
 \end{equation}
 
 In this statement, the problem has a trivial solution is to take $ n $ elements with the largest weights.
-
 \subsection{Problem statement with alliances}
-As mentioned above, in ``Dota Underlords" game each hero belongs to two or more ``alliances" --- in turn, each alliance includes several heroes. When the team has several heroes from the same alliance (for each alliance this number is individual), the player receives a bonus, which is expressed in strengthening all the heroes of the alliance, or strengthening all heroes of the team, or weakening all the heroes of the opponent team. The last can be interpreted as a relative strengthening of own heroes. Therefore we consider only the first two cases throughout the paper. It should be noted that for one alliance, there can be several bonuses that are unlocked by the different numbers of heroes of the corresponding alliance. These bonuses can also be of various types.
-
-We propose to model that situation by introducing 3-index tensor $ e_{ijk} \in \mathbb{R} $ which represents a bonus to hero $i$ from alliance $j$, in which there are at least $k$ heroes of the alliance $j$. In other words, $ e_{ijk} $ is the $k$-th bonus of alliance $ j$ for hero $i$.
-
+As mentioned above, in ``Dota Underlords" game each hero belongs to two or more ``alliances" --- in turn, each alliance includes several heroes. When the team has several heroes from the same alliance (for each alliance this number is individual), the player receives a bonus, which is expressed in strengthening all the heroes of the alliance, or strengthening all heroes of the team, or weakening all the heroes of the opponent team. The last can be interpreted as a relative strengthening of own heroes. Therefore we consider only the first two cases throughout the paper. It should be noted that for one alliance, there can be several bonuses that are unlocked by the different numbers of heroes of the corresponding alliance. These bonuses can also be of various types.\\
+We propose to model that situation by introducing 3-index tensor $ e_{ijk} \in \mathbb{R} $ which represents a bonus to hero $i$ from alliance $j$, in which there are at least $k$ heroes of the alliance $j$. In other words, $ e_{ijk} $ is the $k$-th bonus of alliance $ j$ for hero $i$.\\
 By using tensor $e_{ijk} $, we support both types of alliances: the first that gives bonuses to its members and the second that provides bonuses to all  heroes of the team. Moreover, alliances of both types differ in only one thing.  The value of $e_{ijk} $ is zero for alliances that give bonus to their members, if and only if the $i$-th hero doesn't belong to the $j$-th alliance. In the general case, it is not necessarily true. Note that tensor $ e_{ijk} $ is sparse for real instances of auto-chess games since there are few alliances that give bonuses to all the heroes in the team.
-
-We propose to control the presence of the  bonus $ e_{ijk} $ in the total strength of the team by using control binary variable $ I_{ijk} $.
+\\We propose to control the presence of the  bonus $ e_{ijk} $ in the total strength of the team by using control binary variable $ I_{ijk} $.
 So, we can write down the objective function as the following sum $ \sum_{i = 1}^{n} x_i s_i + \sum_{i=1}^{n} \sum_{j=1}^{t}  \sum_{k=1}^{q} e_{ijk} I_{ijk} $.
 Inequalities $\forall{i,j,k} :  \sum_{i'=1}^{n} a_{i'j} x_{i'} -  k\ge M( I_{ijk} - 1)$ connect variables $ x_{i} $ and $ I_{ijk} $ 
-
-These inequalities do not allow binary variable $ I_{ijk} $ to take the value 1 if the solution includes less than $k$ heroes from the alliance $j$. When the solution contains less than $m$ heroes from the alliance $j$, the left side of this inequality is negative, so for the inequalities to be observed, the right side should be even smaller. It is possible only when the binary variable $ I_{ijk} $ is zero. In this case, the right-hand side is $-M $, where $M$ is a big constant known to be larger than $k$, that is, larger than the maximum size of the alliance $q$.
-
-We require that the bonus for the hero $i$ can be activated ($ I_{ijk} = 1 $) only if the hero $i$ belongs to the solution. This is given by the inequalities $ \forall {i, j, k}: I_{ijk} \le x_i $. We also want the bonus $ e_{ijk} $ to be activated only if the character $ i $ belongs to the alliance $j$. For this, we include in the model inequalities $ \forall{i, j, k} :\, I_{ijk} \le a_{ij} $.
-
+\\These inequalities do not allow binary variable $ I_{ijk} $ to take the value 1 if the solution includes less than $k$ heroes from the alliance $j$. When the solution contains less than $m$ heroes from the alliance $j$, the left side of this inequality is negative, so for the inequalities to be observed, the right side should be even smaller. It is possible only when the binary variable $ I_{ijk} $ is zero. In this case, the right-hand side is $-M $, where $M$ is a big constant known to be larger than $k$, that is, larger than the maximum size of the alliance $q$.\\
+We require that the bonus for the hero $i$ can be activated ($ I_{ijk} = 1 $) only if the hero $i$ belongs to the solution. This is given by the inequalities $ \forall {i, j, k}: I_{ijk} \le x_i $. We also want the bonus $ e_{ijk} $ to be activated only if the character $ i $ belongs to the alliance $j$. For this, we include in the model inequalities $ \forall{i, j, k} :\, I_{ijk} \le a_{ij} $.\\
 Thus, after introducing alliances for the model, the system of equations can be written as the following:
-
 \begin{equation}
 \label{eq:DUIP}
 \begin{gathered}
@@ -159,27 +142,17 @@ e_{ijk} \in \mathbb{R} \text{ -- the bonus for the hero } i \text{,  if } k
 a_{ij} \in \{0, 1\} \text{ -- indicates if hero } i \text{ belongs to the alliance } j \\ 
 \end{gathered}
 \end{equation}
-
 \section{Proof of an NP-completeness of the DU problem}
 \label{SectionNPCompleteProof}
-
 To prove that a problem is NP-complete, it is necessary to show that it is NP-hard  and at the same time it belongs to the NP class. Let's us prove both statements.
-
 \subsection{Polynomial-time reduction from the Maximum Density Sub-Graph Problem to the DU problem}
-
 First of all, let us remind to reader that the problem of finding a set of $k$ vertices with the most edges in the subgraph induced by this set is called the maximum dense subgraph of $k$ vertices problem \cite{kortsarz1993choosing}.  Obviously this problem is NP-hard by reduction from clique. 
-
-%should be formulated before Theorem 1. Please, give a reference, where NP-hardness of this problem has been proved
-
 \begin{theorem}
 \label{MEWC_DU}
 The problem of finding the maximum dense subgraph of $k$ vertices reduces to the DU problem.
 \end{theorem}
 \begin{proof}
-
-%Let consider its special case: all the alliances have a size equal to two, and the power of all the heroes is the same.
 Let consider a special case of the DU problem with the following restrictions:
-
 \begin{enumerate}
     \item The powers of all heroes are the same ($\forall i, j \; s_i=s_j$)
     \item Alliances can provide bonuses only to the heroes that belong to the corresponding alliance. ($\forall i, j, k \; a_{ij}=0 \Longrightarrow e_{ijk} = 0$)
@@ -187,12 +160,8 @@ Let consider a special case of the DU problem with the following restrictions:
     \item All alliances give bonus if and only if both heroes present in the team ($\forall i, j \; e_{ij1}=0$)
     \item Bonuses from all alliances are the same ($\forall i, j, i', j' \; a_{ij}=1,\, a_{i' j'}=1 \Longrightarrow e_{ij2}=e_{i' j' 2}$)
 \end{enumerate}
-
-Then the data can be represented as a graph $G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the activated alliances. You may notice that in this case the optimal team of size $ k $ corresponds to the densest subgraph $ G' \subset G $ with $ k $ vertices.  In this formulation density can be understood as the value $ \frac{|G'(E)|}{|G'(V)|} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of activated alliances, which corresponds to $ G'(E)$. Since $ k $ is a constant, the total strength of the team grows with the increasing density of the graph $ G '$ .
-
-%It was shown in \cite{downey1995fixed} that the problem of fining subgraph with a fixed size and maximum density is NP-complete. 
-Thus, we have shown that finding the maximum dense subgraph of $k$ vertices is a special case of the DU problem, so it is reducible to DU problem. Therefore the DU problem is no less difficult than NP hard  problem. Thus the DU problem is NP-hard as well.
-
+Then the data can be represented as a graph $G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the activated alliances. You may notice that in this case the optimal team of size $ k $ corresponds to the densest subgraph $ G' \subset G $ with $ k $ vertices.  In this formulation density can be understood as the value $ \frac{|G'(E)|}{|G'(V)|} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of activated alliances, which corresponds to $ G'(E)$. Since $ k $ is a constant, the total strength of the team grows with the increasing density of the graph $ G '$ .\\
+Thus, we have shown that finding the maximum dense subgraph of $k$ vertices is a special case of the DU problem, so it is reducible to DU problem. Therefore the DU problem is no less difficult than NP hard  problem. Thus the DU problem is NP-hard as well$\blacksquare$
 \end{proof}
 
 \subsection{Dota Underlords belongs to NP-class}
@@ -202,12 +171,9 @@ Decision version of DU problem (problem with answer ``yes" or ``no") can be form
 The decision version of DU problem belongs to the  NP class.
 \end{theorem}
 \begin{proof}
-
-By definition of the NP-class, the problem belongs to the NP class, when a reported solution can be checked in polynomial time. In our case, solution is a set of $m$ heroes. To verify the solution, we need to calculate the total power of the team. 
-
-So, we just need to calculate the objective function. In turn, to do that, at first we need to find out what alliances are formed. This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$. It is can be done for $O(nt)$ operations. 
-
-After that, the objective function can be calculated in a straightforward way by $O(ntq)$ number of operations. Thus, we need can check the solution for the polynomial time on the input size. 
+By definition of the NP-class, the problem belongs to the NP class, when a reported solution can be checked in polynomial time. In our case, solution is a set of $m$ heroes. To verify the solution, we need to calculate the total power of the team.\\
+So, we just need to calculate the objective function. In turn, to do that, at first we need to find out what alliances are formed. This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$. It is can be done for $O(nt)$ operations. \\
+After that, the objective function can be calculated in a straightforward way by $O(ntq)$ number of operations. Thus, we need can check the solution for the polynomial time on the input size  $\blacksquare$
 \end{proof}
 
 \subsection{NP-completeness of DU problem}
@@ -216,12 +182,11 @@ After that, the objective function can be calculated in a straightforward way by
 \end{theorem}
 
 \begin{proof}
-Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-hard problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of DU problem is NP-complete \blacksquare
+Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-hard problem to DU. At the same time, by the theorem \ref{DU_is_NP} we showed that the problem DU belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of DU problem is NP-complete $\blacksquare$
 \end{proof}
 
 \section{Polynomial-Time Reduction from the DU problem to the MEWC}
-While working on the paper, we additionally found a polynomial-time reduction of DU problem to well-known problem --- Maximum Edge-Weighted Clique (MEWC).  Thus anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or efficient quadratic formulations from \cite{hosseinian2017maximum} for solving instances of the DU problem, 
-
+While working on the paper, we additionally found a polynomial-time reduction of DU problem to well-known problem --- Maximum Edge-Weighted Clique (MEWC).  Thus anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or efficient quadratic formulations from \cite{hosseinian2017maximum} for solving instances of the DU problem.\\
 In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$. 
 
 \begin{figure}[h!]
@@ -232,10 +197,6 @@ In this reduction, we will consider a problem with the maximum size of the allia
 \label{fig:reduction}
 \end{center}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Теорема для случая альянса размером k
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{theorem}
 \label{general_case}
@@ -257,40 +218,27 @@ In this reduction, we will consider a problem with the maximum size of the allia
         \item The vertices $v_a^i $ and $v_{a'}^{i'} $ lie in different sets from the family $\mathcal{F}$ ($ i \neq i /'$)
     \end{itemize}
 
-    Consider all maximum cliques in the graph $G$. Obviously, in any clique of size $m$, there is exactly one vertex from each set $ V^i $. At the same time all vertexes of clique correspond to distinct heroes. Thus, each clique corresponds to a team of $m$ heroes of the DU task. Note that each team can correspond to several cliques.
-  
-    To introduce heroes strengths (power), we assign a weight $ \frac{s_a}{m-1} + \frac{s_{a '}}{m-1}$ to an edge between the vertices $s_a^i$ and $s_ {a'}^{i'}$. 
-    Let us show that the sum of the edges weights in a click corresponding to a certain team is exactly the total strength of the team. Indeed, for each vertices of the clique, there are exactly $m-1$ incident edges. Then, each term $\frac{s_i}{m-1}$ corresponding to a vertex with a subscript $i$ is included in the total sum exactly $m-1$ times. It follows that the sum of all the weights of the clique edges is the sum of all the values $s_i$ corresponding to the numbers of the vertices that form this clique.      
-%------------
-    
-Secondly, we construct a graph $G'$ with weighted edges in such a way that the solution of the problem DU follows from the solution of the MEWC problem. Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem.
-
-    We construct a set $W^{1,q} $ with $\binom{n}{q} $ vertices, where each vertex corresponds to an unordered set of $q$ heroes. We enumerate these vertices in the lexicographic order corresponding to the order of  combinations of $ \binom {n}{q} $ elements of $ w^1_ {\underbrace {1,2, ..., q}_\text{total $ q $ indices }}, w^1_{\underbrace {1,2, ..., q + 1}_\text {total $ q $ indices}}, ..., w^1_ {\underbrace{n-q+1, ..., n-1, n}_\text{total $ q $ indices}} $. It is important that each of these elements has exactly $q$ indices.
-
-We additionally construct $ \binom{m}{q}-1 $ vertex sets $ W^{1,2, ..., q} $, $W^{1,2, q + 1} $ and so on up to $ W^{n-q + 1, ..., n-1, n} $. In every of these sets we also assign each vertex to an unordered set of $q$ heroes of the DU problem according to $\binom{n}{q}$ possible combinations. Similarly to the first set, we enumerate the vertices in the set $V^{\overbrace {i, j, k, l, ...}^\text {total $ q $ indices}} $ as $w_{\underbrace {1,2, ..., q}_\text {total $ q $ indices}}^{\overbrace{i, j, k, l, ...}^\text{total $ q $ indices}} $, $w_{ \underbrace {1,2, ..., q + 1}_\text{total $ q $ indices}}^{\overbrace{i, j, k, l, ...} ^\text{total $ q $ indices}} $,  ..., $w_{\underbrace {n-q + 1, ..., n-1, n}_\text{total $ q $ indices}}^{\overbrace { i, j, k, l, ...}^\text {total $ q $ indices}} $.
+    Consider all maximum cliques in the graph $G$. Obviously, in any clique of size $m$, there is exactly one vertex from each set $ V^i $. At the same time all vertexes of clique correspond to distinct heroes. Thus, each clique corresponds to a team of $m$ heroes of the DU task. Note that each team can correspond to several cliques.\\  
+    To introduce heroes strengths (power), we assign a weight $ \frac{s_a}{m-1} + \frac{s_{a '}}{m-1}$ to an edge between the vertices $s_a^i$ and $s_ {a'}^{i'}$.\\
+    Let us show that the sum of the edges weights in a click corresponding to a certain team is exactly the total strength of the team. Indeed, for each vertices of the clique, there are exactly $m-1$ incident edges. Then, each term $\frac{s_i}{m-1}$ corresponding to a vertex with a subscript $i$ is included in the total sum exactly $m-1$ times. It follows that the sum of all the weights of the clique edges is the sum of all the values $s_i$ corresponding to the numbers of the vertices that form this clique.\\          
+Secondly, we construct a graph $G'$ with weighted edges in such a way that the solution of the problem DU follows from the solution of the MEWC problem. Moreover, the size of the MEWC problem is limited by a polynomial on the size of the DU problem.\\
+    We construct a set $W^{1,q} $ with $\binom{n}{q} $ vertices, where each vertex corresponds to an unordered set of $q$ heroes. We enumerate these vertices in the lexicographic order corresponding to the order of  combinations of $ \binom {n}{q} $ elements of $ w^1_ {\underbrace {1,2, ..., q}_\text{total $ q $ indices }}, w^1_{\underbrace {1,2, ..., q + 1}_\text {total $ q $ indices}}, ..., w^1_ {\underbrace{n-q+1, ..., n-1, n}_\text{total $ q $ indices}} $. It is important that each of these elements has exactly $q$ indices.\\
+We additionally construct $ \binom{m}{q}-1 $ vertex sets $ W^{1,2, ..., q} $, $W^{1,2, q + 1} $ and so on up to $ W^{n-q + 1, ..., n-1, n} $. In every of these sets we also assign each vertex to an unordered set of $q$ heroes of the DU problem according to $\binom{n}{q}$ possible combinations. Similarly to the first set, we enumerate the vertices in the set $V^{\overbrace {i, j, k, l, ...}^\text {total $ q $ indices}} $ as $w_{\underbrace {1,2, ..., q}_\text {total $ q $ indices}}^{\overbrace{i, j, k, l, ...}^\text{total $ q $ indices}} $, $w_{ \underbrace {1,2, ..., q + 1}_\text{total $ q $ indices}}^{\overbrace{i, j, k, l, ...} ^\text{total $ q $ indices}} $,  ..., $w_{\underbrace {n-q + 1, ..., n-1, n}_\text{total $ q $ indices}}^{\overbrace { i, j, k, l, ...}^\text {total $ q $ indices}} $.\\
     We denote the family of these sets as $ \mathcal {F} _q $. Thus, we get $ \binom{m}{q} $ sets with $ \binom{n}{q} $.
     We draw additional edges between the vertices $w_{\underbrace{a, b, c, ....}_\text{total $ q $ indices}}^{\overbrace{i, j, k , ...}^\text{total $ q $ indices}} $ and $w_{\underbrace{a',b', c', ...}_\text{total $ q $ indices}}^{\overbrace {i ', j', k ', ...}^\text{total $ q $ indices}}$. An edge is drawn if both of the following conditions are true:
     \begin{itemize}
         \item The vertices $w_{a, b, c, ...}^{i, j, k ...} $ and $ w_ {a', b', c', ...}^{i', j', k', ...}$ correspond to different set of heroes ($ a \neq a '\lor b \neq b' \lor c \neq c', ... $)
         \item The vertices $ w_{a, b, c, ...}^ {i, j, k ...} $ and $ w_{a', b', c',...}^{i', j', k', ...} $ belong to different sets from the family $ F_q $ ($ i \ neq i'\lor j \ neq j' \lor k \neq k', ... $)
     \end {itemize}
-    
-    We also build all possible edges between every vertices of the sets $ F $ and $ F_q $. We assign a weight of 0 to all those edges. Indeed, any maximal clique contains one vertex from each of the sets $ V $ and $ W $ of the families $\mathcal {F}$ and $\mathcal {F}_q$. We assign to each edge with a shape $ (v_a^k, w_ {a, b, c, ...}^ {i, j, k, ...}) $ or $ (v_b^k, w_{a, b, c , ...}^{i, j, k, ...}) $ some big constant weight $ N $. Thus, every edge connect a vertex from the family $ \mathcal{F} $ corresponding to some hero with a vertex from the family $ F_q $ corresponding to the set of $ q $ heroes (a hero forms alliance with set of $q$ heroes). 
-    
-     Now we are going to show that any maximal clique $\mathcal{C}$ in graph $G'$ has a set of vertices from the family $\mathcal{F}$ corresponding to a certain set of heroes, and at the same time $\mathcal{C}$ contains a set of vertices from the family $ \mathcal{F}_q $ corresponding to all combinations of $q$ heroes. In the clique $\mathcal{C}$, the edges connecting the vertices from the families $ \mathcal{F} $ and $ \mathcal{F}_q $ make a total contribution to the weight of $\mathcal{C}$, and this contribution equals to $ q \binom{n}{q} N $. It is because the clique includes exactly $ q \binom{n}{q} $ edges with additional big constant weight $N$ --- $q$ incident to each vertex from $ \mathcal {F}_q $.  It is not hard to see that when a vertex in a clique belongs to the family $ \mathcal{F}_q $, and does not belong to a set of $q$ vertices from $ \mathcal {F} $, then the clique $\mathcal{C}$ contains at least one edge less with an additional big constant weight $ N $ among the edges of the clique. Thus, the clique $\mathcal{C}$ doesn't have the maximum weight. Thus, the statement is proved. 
-    
-    Note that adding weights on the edges that are small compared to $N$ preserves the truth of the statement. Since $N$ is chosen arbitrarily, we can assume that all the values of heroes powers and bonuses are small compared to $N$.
-	Therefore we add bonuses to the weights of the edges with shape $ (v_x^{y}, w_{a, b, c, ...} ^ {i, j, k, ...}) $ connecting the vertices from the families of $\mathcal{F} $ and $ \mathcal{F}_q $. If the team has the heroes $a$, $b$, $c$, ... and hero $x$, then this bonus will be included in the weight of the MEWC. Since all the cliques under consideration have the same number of edges with an additional weight $N$, the maximum clique will be the one where the maximum is the sum of the heroes' powers (the sum of the weights of the edges between the vertices of the $ \mathcal{F} $ family) and bonuses (the weights of the edges between the vertices of the families $ \mathcal{F} $ and $ \mathcal {F}_q $ without taking into account the constants $ N $).
-    
-Thus, the weight of the clique corresponds to the total bonus from the team, from where the polynomial-time reduction is clear    \blacksquare .
+    We also build all possible edges between every vertices of the sets $ F $ and $ F_q $. We assign a weight of 0 to all those edges. Indeed, any maximal clique contains one vertex from each of the sets $ V $ and $ W $ of the families $\mathcal {F}$ and $\mathcal {F}_q$. We assign to each edge with a shape $ (v_a^k, w_ {a, b, c, ...}^ {i, j, k, ...}) $ or $ (v_b^k, w_{a, b, c , ...}^{i, j, k, ...}) $ some big constant weight $ N $. Thus, every edge connect a vertex from the family $ \mathcal{F} $ corresponding to some hero with a vertex from the family $ F_q $ corresponding to the set of $ q $ heroes (a hero forms alliance with set of $q$ heroes).\\
+     Now we are going to show that any maximal clique $\mathcal{C}$ in graph $G'$ has a set of vertices from the family $\mathcal{F}$ corresponding to a certain set of heroes, and at the same time $\mathcal{C}$ contains a set of vertices from the family $ \mathcal{F}_q $ corresponding to all combinations of $q$ heroes. In the clique $\mathcal{C}$, the edges connecting the vertices from the families $ \mathcal{F} $ and $ \mathcal{F}_q $ make a total contribution to the weight of $\mathcal{C}$, and this contribution equals to $ q \binom{n}{q} N $. It is because the clique includes exactly $ q \binom{n}{q} $ edges with additional big constant weight $N$ --- $q$ incident to each vertex from $ \mathcal {F}_q $.  It is not hard to see that when a vertex in a clique belongs to the family $ \mathcal{F}_q $, and does not belong to a set of $q$ vertices from $ \mathcal {F} $, then the clique $\mathcal{C}$ contains at least one edge less with an additional big constant weight $ N $ among the edges of the clique. Thus, the clique $\mathcal{C}$ doesn't have the maximum weight. Thus, the statement is proved. \\
+    Note that adding weights on the edges that are small compared to $N$ preserves the truth of the statement. Since $N$ is chosen arbitrarily, we can assume that all the values of heroes powers and bonuses are small compared to $N$.\\
+	Therefore we add bonuses to the weights of the edges with shape $ (v_x^{y}, w_{a, b, c, ...} ^ {i, j, k, ...}) $ connecting the vertices from the families of $\mathcal{F} $ and $ \mathcal{F}_q $. If the team has the heroes $a$, $b$, $c$, ... and hero $x$, then this bonus will be included in the weight of the MEWC. Since all the cliques under consideration have the same number of edges with an additional weight $N$, the maximum clique will be the one where the maximum is the sum of the heroes' powers (the sum of the weights of the edges between the vertices of the $ \mathcal{F} $ family) and bonuses (the weights of the edges between the vertices of the families $ \mathcal{F} $ and $ \mathcal {F}_q $ without taking into account the constants $ N $).\\
+Thus, the weight of the clique corresponds to the total bonus from the team, from where the polynomial-time reduction is clear    $\blacksquare$
 \end{proof}
-
-%\section{Практическое применение для реальной задачи Dota Underlords}
 \section{Model application for real data}
 \label{SectionComputationalResults}
-  
-We have applied the prosed model to analyze the real DU problem. Note that our result should not be considered as an objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes’ power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when various conditions satisfied, and in addition, the ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers", arranged so that the characters inside the tier are approximately equal in strength.
-
+We have applied the prosed model to analyze the real DU problem. Note that our result should not be considered as an objective assessment of the quality of the team of heroes. The reason is the inevitable simplification of the heroes’ power as well as the influence that the alliances have. Each hero in Underlords has a certain ability, which is activated when various conditions satisfied, and in addition, the ability has some recharge time. Alliance abilities and bonuses are also very diverse in their influence on the game -- they can cause damage, heal allies, prevent enemies from using their abilities, and more. Fortunately, the game has a system of five ``tiers", arranged so that the characters inside the tier are approximately equal in strength.\\
 Within the simplified model, we accept the following:
 \begin{enumerate}
 \item The forces of all the heroes of the first tier are equal to 1,  the second -- 2, the third -- 3, the fourth -- 4, the fifth -- 5;
@@ -380,7 +328,6 @@ A complete table  of bonuses from the alliances $e_{ijk} $ can be found in our p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  RESULT TABLE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 We provide a solution of the linear integer programming model defined by the system of inequalities \eqref{eq:DUIP}, as a table \ref{table:solution}.
 
 \begin{table}
@@ -404,22 +351,11 @@ witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 
 \caption{Optimal team structure for the Dota Underlords game with all the active bonuses. The integer number following the alliance name means the bonus level.}
 \label{table:solution}
 \end{table}
-
-
 \section{Conclusion}
 \label{SectionConclusion}
-%I believe that the conclusions section should re-written by omitting the hopes of the authors, discussions of their contribution to the theory of NP-completeness and etc. They should focus on description of their results and perspectives of the research
-
-
-
-In this paper, we demonstrated how a key to winning in a video game can lie in using linear integer  programming model. We have described gameplay of the Dota Underlords, and have proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay. We have proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC. Also we have made assumptions about heroes strengths, and values of alliance bonuses. Based on this data we have found the exact solution of the proposed model with using IP-solver. 
-
+In this paper, we demonstrated how a key to winning in a video game can lie in using linear integer  programming model. We have described gameplay of the Dota Underlords, and have proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay. We have proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC. Also we have made assumptions about heroes strengths, and values of alliance bonuses. Based on this data we have found the exact solution of the proposed model with using IP-solver. \\
 The values of heroes  strengths, alliance bonuses, and  the results of solved the IP-model in the form of a Jupyter-notebook can be found in our pubic repository \cite{UnderLordsInput}.
-
-%... and perspectives of the research
-
 \section{Acknowledgements}
-
 The article was prepared within the framework of the Basic Research Program at the National Research University Higher School of Economics (HSE).
 
 \bibliographystyle{unsrt}
