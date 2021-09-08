@@ -69,16 +69,26 @@ In this paper, we demonstrate how the optimal team choice problem in the popular
 \section{Introduction}
 People love to play games. Many games and puzzles that people play are interesting due to their complexity: you need to be smart enough to solve it. In many cases, such complexity can be expressed as computation complexity depending on the input size. For example, it was shown that the puzzle ``Sokoban" is polynomially solvable \cite{hearn2005pspace}; in \cite{fraenkel1981computing} authors proved that the chess game belongs to the EXPTIME complexity class.
 In turn, NP-complete computational class has a special place in theoretical computer science.
-In \cite{breukelaar2004tetris} it was proved that the optimally playing offline version of legendary video game ``Tetris" is NP-complete. As well, it was found in \cite{kaye2000minesweeper} that ``Minesweeper" belongs to NP-complete class. In a generalized version of 15-puzzle for the board with size $N \times N$, the decision version of the problem of finding a minimal number of chip movements also belongs to the NP-complete \cite{ratner1986finding}.\\
+In \cite{breukelaar2004tetris} it was proved that the optimally playing offline version of legendary video game ``Tetris" is NP-complete. As well, it was found in \cite{kaye2000minesweeper} that ``Minesweeper" belongs to NP-complete class. In a generalized version of 15-puzzle for the board with size $N \times N$, the decision version of the problem of finding a minimal number of chip movements also belongs to NP-complete \cite{ratner1986finding}.\\
 In some sense, every NP-complete problem is a puzzle, and vice-verse, many puzzles are NP-complete. We refer the reader to the surveys \cite{costa2018computational}, \cite{kendall2008survey} for deeper study computational complexity of puzzles and games.\\
 In this paper, we consider the popular video game Dota Unlderlords. It is one of the so-called auto-chess games. It turns out that this problem can be represented as a combinatorial optimization problem, which decision version belongs to NP-complete class.\\
 The article is organized as follows. Dota Underlords gameplay is described in section \ref{SectionDUDescription}.
-We present a formulation of the Dota Underlords problem (DU problem) as the linear integer programming model in section \ref{SectionDUIP}. In \ref{SectionNPCompleteProof} section, we show the NP-completeness of this task and reduce the problem to the maximum edge-weighted clique problem (MEWC). The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in section \ref{SectionConclusion} ``Conclusion".
+We present a formulation of the Dota Underlords problem (DU problem) as the linear integer programming model in section \ref{SectionDUIP}. In \ref{SectionNPCompleteProof} section, we show NP-completeness of this task and reduce the problem to the maximum edge-weighted clique problem (MEWC). The solution of the integer programming model for a real data is presented in section \ref{SectionComputationalResults}. Traditionally, we summarize in section \ref{SectionConclusion} ``Conclusion".
 
 \section{Dota Underlords game play description}
 \label{SectionDUDescription}
-During a game eight players build a team of ``heroes"-- creatures that can fight each other on a game map. Each of the heroes has basic parameters: health, damage, attack speed, and others, as well as a special ability that determines its role in a game. Each hero belongs to two or more ``alliances"-- the sets that unite several heroes. For example, Enchantress hero belongs simultaneously to the ``druids" alliance and to the ``predators" alliance. When there are several heroes in the team who belong to the same alliance (for each alliance this number is individual), the player receives a bonus consisting of improving the characteristics of his heroes or worsening the parameters of enemy's heroes.\\
-In a game, a player can strengthen heroes by upgrading them to higher levels or by purchasing in-game items. Moreover, during the game player can change the line-up of the team by spending in-game money in order to react on the actions of his opponents. However in turn it may weaken the team, because somewhat weaker heroes can appear in the game later. Also, during a combat the position of heroes on a board matters. In this work, we don't take into account these aspects. The reason is that it is very hard to model all of the intricacy of the game due to involving many factors. Therefore the goal of our model is to analyse the core gameplay which defines the auto-battler genre -- the forming a team of heroes in order to maximize a total strength.
+During a game eight players build a team of ``heroes"-- creatures that can fight each other on a game map.
+Each of the heroes has basic parameters: health, damage, attack speed, and others, as well as a special ability that determines its role in a game.
+Each hero belongs to two or more ``alliances"-- the sets that unite several heroes.
+For example, Enchantress hero belongs simultaneously to ``druids" alliance and to ``predators" alliance.
+When there are several heroes in the team who belong to the same alliance (for each alliance this number is individual), the player receives a bonus which can consist of improving the characteristics of his heroes or worsening the parameters of enemy's heroes.\\
+In the game, a player can strengthen heroes by upgrading them to higher levels or by purchasing in-game items.
+Moreover, during the game player can change the line-up of the team by spending in-game money in order to response to actions of his opponents.
+However it may weaken the team, because somewhat weaker heroes can appear in the game later.
+Also, during a combat, position of heroes on the board matters.
+In this work, we don't take into account these aspects.
+The reason is that it is very hard to model all of the intricacy of the game due to involving many factors.
+Therefore, the goal of our model is to analyse the core gameplay which defines auto-battler genre -- to form a team of heroes in order to maximize a total strength.
 
 Thus, in our simplified model of the real game, the strength of a team is determined by two factors:
 \begin{enumerate}
@@ -92,7 +102,12 @@ Thus, in our simplified model of the real game, the strength of a team is determ
 
 \subsection{The simplest problem statement}
 
-We formalize the problem as follows. We assume that in total we have $n$ heroes to choose from. We assume that the strength (power) of some $i$-th hero is presented by some non-negative value $s_i$. $x_i$ indicates the belonging of hero $i$ to the team being formed. We suppose $ x_i = 1 $, if the $ i $ -th hero belongs to the team, and $ x_i = 0 $ otherwise.  The condition that there are no more than $m$ heroes in a team, can be written as $ \sum_{i=1}^n x_i \leq m $.
+We formalize the problem as follows.
+Suppose in total we have $n$ heroes to choose from.
+We assume that the strength (power) of some $i$-th hero is presented by some non-negative value $s_i$.
+$x_i$ indicates that hero $i$ belongs the team being formed.
+We suppose $ x_i = 1 $, if the $ i $ -th hero belongs to the team, and $ x_i = 0 $ otherwise.
+The condition that there are no more than $m$ heroes in a team, can be written as $ \sum_{i=1}^n x_i \leq m $.
 Therefore, the simplest way to formalize the problem is following:
 
 \begin{equation}
@@ -144,9 +159,11 @@ a_{ij} \in \{0, 1\} \text{ -- indicates if hero } i \text{ belongs to the allian
 \end{equation}
 \section{Proof of an NP-completeness of the DU problem}
 \label{SectionNPCompleteProof}
-To prove that a problem is NP-complete, it is necessary to show that it is NP-hard  and at the same time it belongs to the NP class. Let's us prove both statements.
+To prove that a problem is NP-complete, it is necessary to show that it is NP-hard and at the same time it belongs to NP-class.
+Let's us prove both statements.
 \subsection{Polynomial-time reduction from the Maximum Density Sub-Graph Problem to the DU problem}
-First of all, let us remind to reader that the problem of finding a set of $k$ vertices with the most edges in the subgraph induced by this set is called the maximum dense subgraph of $k$ vertices problem \cite{kortsarz1993choosing}. Obviously this problem is NP-hard by reduction from clique.
+First of all, let us remind to reader that the problem of finding a set of $k$ vertices with the most edges in the subgraph induced by this set is called the maximum dense subgraph of $k$ vertices problem \cite{kortsarz1993choosing}.
+Obviously this problem is NP-hard by reduction from clique.
 \begin{theorem}
 \label{MEWC_DU}
 The problem of finding the maximum dense subgraph of $k$ vertices reduces to the DU problem.
@@ -160,39 +177,56 @@ Let consider a special case of the DU problem with the following restrictions:
     \item All alliances give bonus if and only if both heroes present in the team ($\forall i, j \; e_{ij1}=0$)
     \item Bonuses from all alliances are the same ($\forall i, j, i', j' \; a_{ij}=1,\, a_{i' j'}=1 \Longrightarrow e_{ij2}=e_{i' j' 2}$)
 \end{enumerate}
-Then the data can be represented as a graph $ G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the activated alliances. You may notice that in this case the optimal team of size $ k $ is the densest subgraph $ G' \subset G $ with $ k $ vertices.  According to this formulation, density can be understood as a value $ \frac{|G'(E)|}{|G'(V)|} $. Indeed, under these restrictions, the total strength of the team linearly depends on the number of activated alliances, which corresponds to $ G'(E)$. Since $ k $ is a constant, the total strength of the team grows with the increasing density of the graph $ G '$ .\\
-Thus, we have shown that finding the maximum dense subgraph of $k$ vertices is a special case of the DU problem, so it is reducible to DU problem. Therefore the DU problem is no less difficult than the NP-hard  problem. Consequently the DU problem is NP-hard as well$\blacksquare$
+Then the data can be represented as a graph $ G(V, E) $, where the set of vertices $ V $ corresponds to the heroes, and the set of edges $E$ corresponds to the activated alliances. Note that in this case the optimal team of size $ k $ is the densest subgraph $ G' \subset G $ with $ k $ vertices.
+According to this formulation, density can be understood as a value $ \frac{|G'(E)|}{|G'(V)|} $.
+Indeed, under these restrictions, the total strength of the team linearly depends on the number of activated alliances, which corresponds to $ G'(E)$.
+Since $ k $ is a constant, the total strength of the team grows with the increasing density of the graph $ G '$ .\\
+Thus, we have shown that finding the maximum dense subgraph of $k$ vertices is a special case of the DU problem, so it is reducible to DU problem.
+Therefore the DU problem is no less difficult than NP-hard  problem. Consequently the DU problem is NP-hard as well$\blacksquare$
 \end{proof}
 
 \subsection{Dota Underlords belongs to NP-class}
-Decision version of DU problem (problem with answer ``yes" or ``no") can be formulated as follows: ``\textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}". Then, we are ready to state the following theorem.
+Decision version of DU problem (problem with answer ``yes" or ``no") can be formulated as follows: ``\textit{Is there a team with at most $ m $ heroes and with a total power greater than some given constant?}".
+Now we are ready to state the following theorem.
 \begin{theorem}
 \label{DU_is_NP}
-The decision version of DU problem belongs to the  NP class.
+Decision version of DU problem belongs to NP-class.
 \end{theorem}
 \begin{proof}
-By definition of NP-class, the problem belongs to the NP class, when a reported solution can be checked in polynomial time. In our case, solution is a set of $m$ heroes. To verify solution, we need calculate the total power of the team.\\
-So, we just need to calculate the objective function. In turn, to do that, at first we need to find out what the alliances are formed. This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$. It can be done for $O(nt)$ operations. \\
-After that, the objective function can be calculated in a straightforward way by $O(ntq)$ number of operations. Thus, we can check the solution for polynomial time dependent on the input size  $\blacksquare$
+By definition of NP-class, the problem belongs to NP-class, when reported solution can be checked in polynomial time.
+In our case, solution is a set of $m$ heroes. To verify solution, we need calculate the total power of the team.\\
+So, we just need to calculate the objective function.
+In turn, to do that, at first we need to find out what the alliances are formed.
+This means that we need to calculate the number of non-zero elements for each column in the matrix $a_{ij}$, taking into account only rows corresponding to the heroes from the team i.e  we mean submatrix $\{a_{ij}:  j \in \overline{1,m},\; i \in \{  i' \in \overline{1,n} :   x_{i'} = 1 \}  \}$.
+It can be done with $O(nt)$ operations.\\
+Finilly, the objective function can be calculated in a straightforward way with $O(ntq)$ number of operations.
+Thus, we can check the solution for polynomial time dependent on the input size  $\blacksquare$
 \end{proof}
 
 \subsection{NP-completeness of DU problem}
 \begin{theorem}
-	The DU problem defined by the system of inequalities \eqref{eq:DUIP}  belongs to the class of NP-complete problems.
+	The DU problem defined by system of inequalities \eqref{eq:DUIP} belongs to class of NP-complete problems.
 \end{theorem}
 
 \begin{proof}
-Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-hard problem to DU. At the same time, in the theorem \ref{DU_is_NP} we showed that the DU problem belongs to the NP class. Thus, the DU problem is NP-hard, and at the same time, it lies in the NP class. Therefore the decision version of DU problem is NP-complete $\blacksquare$
+Theorem \ref{MEWC_DU} states that there exists a polynomial-time reduction of an NP-hard problem to DU.
+At the same time, in the theorem \ref{DU_is_NP} we showed that the DU problem belongs to NP-class.
+Thus, the DU problem is NP-hard, and at the same time, it lies in NP-class.
+Therefore the decision version of DU problem is NP-complete $\blacksquare$
 \end{proof}
 
 \section{Polynomial-Time Reduction from the DU problem to the MEWC}
-While working on the paper, additionally we found a polynomial-time reduction of DU problem to well-known problem --- Maximum Edge-Weighted Clique (MEWC). Thus anyone can use the already developed algorithms for the MEWC problem such as \cite{san2019new} or an efficient quadratic formulation from \cite{hosseinian2017maximum} for solving instances of the DU problem.\\
+While working on the paper, additionally we found a polynomial-time reduction of DU problem to well-known problem --- Maximum Edge-Weighted Clique (MEWC).
+Thus anyone can use already developed algorithms for the MEWC problem such as \cite{san2019new} or an efficient quadratic formulation from \cite{hosseinian2017maximum} for solving instances of the DU problem.\\
 In this reduction, we will consider a problem with the maximum size of the alliance bounded by some constant $q$.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[height=4in,width=3in,angle=0]{figure1.pdf}
-\caption{An example of graph $G'$ from the theorem \ref{general_case}  for the case $n=4$, $m=3$, $q=2$.  Graph $G'$ consists of the sets $\mathcal{F}$ and $\mathcal{F}_2$. The edges between every vertex of sets $\mathcal{F}$ and $\mathcal{F}_2$ are avoided for picture simplicity. The size of the maximal clique is 6. }
+\caption{An example of graph $G'$ from the theorem \ref{general_case} for the case $n=4$, $m=3$, $q=2$.
+Graph $G'$ consists of the sets $\mathcal{F}$ and $\mathcal{F}_2$.
+The edges between every vertex of sets $\mathcal{F}$ and $\mathcal{F}_2$ are avoided for picture simplicity.
+The size of the maximal clique is 6. }
 %в подписи к рисунку надо ещё вставить упоминание о графе G
 \label{fig:reduction}
 \end{center}
@@ -363,8 +397,11 @@ witch doctor  &  heartless 2 +0.2  &  human 2 +0.2  &  insect 2 +0.2  &  scaled 
 \end{table}
 \section{Conclusion}
 \label{SectionConclusion}
-In this paper, we demonstrated that win in a video game can be based on using linear integer programming model.
-We have described gameplay of the Dota Underlords, and have proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay. We have proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC. Also we have made assumptions about heroes strengths, and values of alliance bonuses. Based on this data we have found the exact solution of the proposed model with using IP-solver. \\
+In this paper, we demonstrated that win in a video game can be based on using linear integer programming.
+We described gameplay of the Dota Underlords, and proposed a formal model as a set of inequalities \eqref{eq:DUIP} for one possible simplification of the real gameplay.
+We proved that the proposed model is NP-hard, while decision version is NP-complete. In addition, we introduce a polynomial time reduction from DU problem to MEWC.
+Also we made assumptions about heroes strengths, and values of alliance bonuses.
+Based on this data we have found the exact solution of the proposed model with using IP-solver. \\
 The values of heroes  strengths, alliance bonuses, and  the results of solved the IP-model in the form of a Jupyter-notebook can be found in our pubic repository \cite{UnderLordsInput}.
 \section{Acknowledgements}
 The article was prepared within the framework of the Basic Research Program at the National Research University Higher School of Economics (HSE).
